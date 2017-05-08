@@ -104,7 +104,7 @@ public class operadores_CrearOperador extends senacFieldsConfiguration{
 			driver.findElement(By.id(repeatpwdField)).sendKeys(opzero);	
 			driver.findElement(By.id("ctl00_ContentZone_ChkSalde")).click();
 			driver.findElement(By.id("ctl00_ContentZone_ChkHistorique")).click();
-			driver.findElement(By.id(hourNumber)).sendKeys(ranNumbr(1,1000)+"");	
+			driver.findElement(By.id(hourNumber)).sendKeys(ranNumbr(1,999)+"");	
 			Thread.sleep(500);
 			driver.findElement(By.id(submitBtn)).click();
 			Thread.sleep(3000);
