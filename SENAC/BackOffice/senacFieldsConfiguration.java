@@ -32,7 +32,17 @@ public class senacFieldsConfiguration {
 	public static String loginField = "BoxLogin";
 	public static String passField = "BoxPassword";
 	public static String loginButton = "BtnLogin";
-	
+	public static String opIdField = "ctl00_ContentZone_operatorId_box_data";
+	public static String nameField = "ctl00_ContentZone_forename_box_data";
+	public static String lastNameField = "ctl00_ContentZone_surname_box_data";
+	public static String emailField = "ctl00_ContentZone_email_box_data";
+	public static String groupOperator = "ctl00_ContentZone_group_cmb_dropdown";
+	public static String pwdField = "ctl00_ContentZone_password_box_data";
+	public static String repeatpwdField = "ctl00_ContentZone_password2_box_data";
+	public static String hourNumber = "ctl00_ContentZone_TxtNomHousr_box_data";
+	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";
+	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria Jesús"};
+	public static String [] lastNameOp = new String[] {"Bonilla", "Garrido", "García", "Arjonilla", "Romano", "Navarro", "Sanchez", "Castro", "Bailón", "Blanco"};
 	  //Edit buttons icons configuration.	  
 	  public static final String [] componentList = new String[]{"IB_comunication","IB_vehicle","IB_person","IB_patrol","IB_security","IB_ambulance","IB_crane","IB_weather","IB_trafic","IB_roadway","IB_insideInformation","IB_inconvenientShedule"};
 	  public static Timestamp timest = new Timestamp (System.currentTimeMillis());
