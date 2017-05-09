@@ -28,7 +28,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class gestionTurnos_realizarBusqueda extends senacFieldsConfiguration{
-		public static String opzero=""; //numero de operador
+		
 @Before
 		public void setUp() throws Exception{
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
