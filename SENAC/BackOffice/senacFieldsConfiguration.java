@@ -18,7 +18,7 @@ public class senacFieldsConfiguration {
 	public static final String NIF_STRING_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";		
 	public static int delm;
 	public static String caMe;
-	public static String acam;
+	public static String acam;	
 	public static int ad;
 	public static int caMer;
 	public static WebDriver driver;	
@@ -42,9 +42,13 @@ public class senacFieldsConfiguration {
 	public static String hourNumber = "ctl00_ContentZone_TxtNomHousr_box_data";
 	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";
 	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria Jesús"};
+	public static String [] sexSelc = new String[] {"Sra", "Sra", "Sr", "Sra", "Sra", "Sr", "Sr", "Sr", "Sr", "Sra"};
+	public static String [] addressTec = new String[] {"CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Castanyer 29", "CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Catanyer 29","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo"};
+	public static String [] cpAdress = new String[]{"28041", "28041", "08022", "28041", "28041","08022","47151","47151","47151","47151"};
+	public static String [] townC = new String []{"Madrid", "Madrid", "Barcelona", "Madrid", "Madrid", "Barcelona", "Valladolid","Valladolid","Valladolid","Valladolid"};
+	public static String [] workPhone1 = new String []{"913530810","913530810","932922110","913530810","913530810","932922110","983546603","983546603","983546603","983546603"};
 	public static String [] lastNameOp = new String[] {"Bonilla", "Garrido", "García", "Arjonilla", "Romano", "Navarro", "Sanchez", "Castro", "Bailón", "Blanco"};
-	  //Edit buttons icons configuration.	  
-	  public static final String [] componentList = new String[]{"IB_comunication","IB_vehicle","IB_person","IB_patrol","IB_security","IB_ambulance","IB_crane","IB_weather","IB_trafic","IB_roadway","IB_insideInformation","IB_inconvenientShedule"};
+	  //Edit buttons icons configuration.	  	  
 	  public static Timestamp timest = new Timestamp (System.currentTimeMillis());
 	  public static String timet = timest.toString().replace("-", "").replace(" ", "").replace(":", "").substring(0,14);
 	  
