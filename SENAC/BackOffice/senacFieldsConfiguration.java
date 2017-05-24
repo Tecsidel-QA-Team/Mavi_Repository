@@ -15,7 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class senacFieldsConfiguration {
-	public static final String NIF_STRING_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";		
+	public static final String Letter_Comb = "TRWAGMYFPDXBNJZSQVHLCKE";		
 	public static int delm;
 	public static String caMe;
 	public static String acam;	
@@ -54,7 +54,7 @@ public class senacFieldsConfiguration {
 	  
 	  public static void takeScreenShot(String fname) throws Exception {
 		    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		    FileUtils.copyFile(scrFile, new File("E:\\Selenium\\", fname));
+		    FileUtils.copyFile(scrFile, new File("C:\\Selenium\\", fname));
 	  }
 	  public static void selectDropDownClick2(String by)
       {
@@ -87,24 +87,6 @@ public class senacFieldsConfiguration {
           	
           if (vdd >= dd.size()) { vdd = dd.size() - 1; }
           new Select(driver.findElement(By.id(by))).selectByIndex(vdd);
-
-      }
-	  
-	  public static void ranClick(String ranSel,String del, int min, int max) {// Elegir elemento al azar
-          Random rand = new Random();
-          
-          delm = rand.nextInt((max - min) + 1) + min;
-          if (delm < min) { delm = delm + 1; }
-          if (delm > max) { delm = delm - 1; }
-          if ((delm % 2) == 0) {
-              delm = delm - 1;
-          }
-          if (delm < 10){
-          driver.findElement(By.id(ranSel+del+delm)).click();
-          }else{
-        	  //No Comment
-        	  driver.findElement(By.id(ranSel+delm)).click();
-          }
 
       }
 	  
@@ -179,8 +161,8 @@ public class senacFieldsConfiguration {
      		  numbering = min+rand.nextInt((max-min)+1);
      		  return numbering;    		  
        	}
-     	public static String dniLetra (int dni){
+     	/*public static String dniLetra (int dni){
   		  return String.valueOf(dni)+(NIF_STRING_ASOCIATION.charAt(dni % 23));
-  	  }
+  	  }*/
       	
 }
