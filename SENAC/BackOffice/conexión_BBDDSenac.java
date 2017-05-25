@@ -48,12 +48,12 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 			}
 		@Test
 			public void senacGestionCuentasPage() throws Exception{
-			 String connectionUrl = "jdbc:sqlserver://172.18.130.188\\SENEGAL_QA_TOLLHOST;";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
+			 String connectionUrl = "jdbc:sqlserver://172.18.130.188"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
 			    rs = null;
 		      try {
 		         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		         Connection conn = DriverManager.getConnection(connectionUrl,"SENEGAL_QA_TOLLHOST", "USRTOLLHOST" );
+		         Connection conn = DriverManager.getConnection(connectionUrl, "sa", "lediscet");
 		         stmt = conn.createStatement();
 		         queryString = "select msgtype,min(msgtime) from amessage where msgstatus=0 and msgtype not  in ('StaticFileActivation','Exception') group by msgtype";
 		         rs = stmt.executeQuery(queryString);
