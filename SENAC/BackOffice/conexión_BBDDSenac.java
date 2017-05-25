@@ -60,8 +60,8 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		         String PCD;
 				while (rs.next()) {
 		        	PCD = rs.getString("msgtype");
-//		        	String PCD1 = rs.getString("min(msgtime)");
-		        	System.out.println(PCD);
+		        	String PCD1 = rs.getString("");
+		        	System.out.println(PCD+"      "+PCD1);
 		         }
 		         
 				}catch(Exception e){
