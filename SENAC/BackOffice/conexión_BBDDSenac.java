@@ -47,7 +47,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
     				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			}
 		@Test
-			public void senacGestionCuentasPage() throws Exception{
+			public void dataBaseConnection() throws Exception{
 			 String connectionUrl = "jdbc:sqlserver://172.18.130.188;"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
 			    rs = null;
