@@ -55,7 +55,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		         Connection conn = DriverManager.getConnection(connectionUrl, "sa", "lediscet");
 		         stmt = conn.createStatement();
-		         queryString = "select msgtype,min(msgtime) from amessage where msgstatus=0 and msgtype not  in ('StaticFileActivation','Exception') group by msgtype";
+		         queryString = "select msgtype,min(msgtime) from [SENEGAL_QA_HOST].[DBO].[AMESSAGE] where msgstatus=0 and msgtype not  in ('StaticFileActivation','Exception') group by msgtype";
 		         rs = stmt.executeQuery(queryString);
 		         String PCD;
 				while (rs.next()) {
