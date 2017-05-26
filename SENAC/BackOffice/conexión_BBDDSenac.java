@@ -73,7 +73,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		        	PCD = rs.getString("msgtype");
 		        	String PCD1 = rs.getString("");
 		        	System.out.println("");
-		        	System.out.printf("%-20s",PCD,15);
+		        	System.out.printf("%-20s",PCD);
 		        	System.out.printf("%-20s",PCD1);
 		        	
 		         }
@@ -86,7 +86,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 			
 		@After
 			public void tearDown() throws Exception{			  
-				    driver.quit();
+				    //driver.quit();
 				    String verificationErrorString = verificationErrors.toString();
 				    if (!"".equals(verificationErrorString)) {
 				      fail(verificationErrorString);
