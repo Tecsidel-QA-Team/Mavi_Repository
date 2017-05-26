@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import javax.sql.rowset.CachedRowSet;
+
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 import com.sun.rowset.CachedRowSetImpl;
 
 
@@ -17,10 +19,12 @@ import BackOffice.senacFieldsConfiguration;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +38,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		private static ResultSet rs;
 		private static String queryString;
 		
-@Before
+ 
 		public void setUp() throws Exception{
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
@@ -58,10 +62,20 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		         queryString = "select msgtype,min(msgtime) from [SENEGAL_QA_TOLLHOST].[DBO].[AMESSAGE] where msgstatus=1 and msgtype not  in ('StaticFileActivation','Exception') group by msgtype";
 		         rs = stmt.executeQuery(queryString);
 		         String PCD;
+		         
+		         System.out.print(StringUtils.center("MSGTYPE",15));
+		         System.out.printf(StringUtils.center("MSGTIME",25));
+		         System.out.println("");
+		         for (int a = 1; a <40; a++){
+						System.out.print("-");
+					}
 				while (rs.next()) {
 		        	PCD = rs.getString("msgtype");
 		        	String PCD1 = rs.getString("");
-		        	System.out.println(PCD+"      "+PCD1);
+		        	System.out.println("");
+		        	System.out.printf("%-20s",PCD,15);
+		        	System.out.printf("%-20s",PCD1);
+		        	
 		         }
 		         
 				}catch(Exception e){
