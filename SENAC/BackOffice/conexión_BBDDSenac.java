@@ -40,7 +40,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		
  
 		public void setUp() throws Exception{
-    		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
+    		//System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
     			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true
     			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);*/
