@@ -42,7 +42,7 @@ public class BOHosttransacciones_verTransaccionesBusqueda extends senacFieldsCon
     				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			}
 		@Test
-			public void senacGestionTurnosPage() throws Exception{
+			public void senacverTransaccionessPage() throws Exception{
 				Actions action = new Actions(driver);
 				try{
 					driver.get(baseUrl);
@@ -74,7 +74,6 @@ public class BOHosttransacciones_verTransaccionesBusqueda extends senacFieldsCon
 					Thread.sleep(1000);
 					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
 					Thread.sleep(1500);
-					//takeScreenShot("PlazaverTransaccionesBusqueda"+timet+".jpge");
 					System.out.println("Busqueda Completa: "+ elementsFound);
 					Thread.sleep(1000);					
 				}catch(Exception e){
