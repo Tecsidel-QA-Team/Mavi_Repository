@@ -44,6 +44,7 @@ public class BOPlazatransacciones_verTransaccionesBusqueda extends senacFieldsCo
 		@Test
 			public void senacGestionTurnosPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\Plaza_VerTranscciones\\attachments\\");
 				try{
 					driver.get("http://virtualbo-qa/BOQAPlazaSenac");
 					takeScreenShot("E:\\Selenium\\","loginPlazaSenacPage"+timet+".jpg");

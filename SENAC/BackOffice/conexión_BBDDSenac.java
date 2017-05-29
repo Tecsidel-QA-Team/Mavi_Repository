@@ -1,6 +1,10 @@
 package BackOffice;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -37,7 +41,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		private static Statement stmt;
 		private static ResultSet rs;
 		private static String queryString;
-		
+		private static String verFile;
  
 		public void setUp() throws Exception{
     		//System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
@@ -52,6 +56,8 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 			}
 		@Test
 			public void dataBaseConnection() throws Exception{
+			Thread.sleep(1000);
+			borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\");
 			 String connectionUrl = "jdbc:sqlserver://172.18.130.188:1433;"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
 			    rs = null;
@@ -62,7 +68,16 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		         queryString = "select msgtype,min(msgtime) from [SENEGAL_QA_TOLLHOST].[DBO].[AMESSAGE] where msgstatus=1 and msgtype not  in ('StaticFileActivation','Exception') group by msgtype";
 		         rs = stmt.executeQuery(queryString);
 		         String PCD;
-		         
+		         verFile = "verSenacConnectBBDDResultados_";
+					File result = new File("E:\\Selenium\\"+verFile+timet+".txt");
+					File resultTmp = new File("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\"+verFile+timet+".txt");	  						
+					FileOutputStream fis = new FileOutputStream(new File(result.toString()));
+					FileOutputStream fis2 = new FileOutputStream(new File(resultTmp.toString()));
+					PrintStream out = new PrintStream(fis);
+					PrintStream out2 = new PrintStream(fis2);  						
+					PrintStream old = System.out;
+					System.setOut(out);
+					System.setOut(out2);
 		         System.out.print(StringUtils.center("MSGTYPE",15));
 		         System.out.printf(StringUtils.center("MSGTIME",25));
 		         System.out.println("");
@@ -77,7 +92,9 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		        	System.out.printf("%-20s",PCD1);
 		        	
 		         }
-		         
+					fis.close();
+					fis2.close();
+					System.setOut(old);
 				}catch(Exception e){
 					e.printStackTrace();
 					fail();

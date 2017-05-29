@@ -44,6 +44,7 @@ public class BOHosttransacciones_verTransaccionesBusqueda extends senacFieldsCon
 		@Test
 			public void senacverTransaccionessPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\Host_VerTranscciones\\attachments\\");
 				try{
 					driver.get(baseUrl);
 					takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");

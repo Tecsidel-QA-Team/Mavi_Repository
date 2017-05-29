@@ -56,6 +56,21 @@ public class senacFieldsConfiguration {
 		    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		    FileUtils.copyFile(scrFile, new File(pathS, fname));
 	  }
+	  public static void borrarArchivosTemp(String tempPath) throws Exception{
+			File imagTmp = new File (tempPath);
+			if (imagTmp.exists()){
+				if (imagTmp.isDirectory()){
+					File [] imaglist = imagTmp.listFiles();				
+					if (imaglist.length > 0){
+					 for (int i = 0; i< imaglist.length;i++){
+							File delimg = imaglist[i];						
+							delimg.delete();						
+						}				
+					}
+				}
+			}
+			Thread.sleep(1000);
+		  }	
 	  
 	  public static void selectDropDownClick2(String by)
       {
