@@ -74,7 +74,6 @@ public class BOPlazatransacciones_verTransaccionesBusqueda extends senacFieldsCo
 					Thread.sleep(500);
 					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
 					Thread.sleep(1500);
-					//takeScreenShot("PlazaverTransaccionesBusqueda"+timet+".jpge");
 					System.out.println("Busqueda Completa: "+ elementsFound);
 					Thread.sleep(1000);
 
