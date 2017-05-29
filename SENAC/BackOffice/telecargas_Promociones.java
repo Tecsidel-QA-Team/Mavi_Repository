@@ -63,12 +63,14 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 			 	borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\");
 				try{
 					driver.get(baseUrl);
-					//takeScreenShot("loginpageSenac"+timet+".jpg");
+					takeScreenShot("E:\\Selenium\\","loginpageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","loginpageSenac.jpg");				
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePageSenac"+timet+".jpg");
+					takeScreenShot("E:\\Selenium\\","homepageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","homepageSenac.jpg");
 					Thread.sleep(1000);
 					action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
 					Thread.sleep(1000);
@@ -95,8 +97,11 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 			
 			public static void enfuncionRecarga() throws Exception{		
 					driver.findElement(By.id("ctl00_ContentZone_BtnCreate")).click(); // Botón crear operador
+					takeScreenShot("E:\\Selenium\\","promoenFuncionRecarga_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecarga.jpg");
 					Thread.sleep(1500);
-					//takeScreenShot("operatorCrateScr"+timet+".jpg");
+					takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaCreate_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreate.jpg");
 					dateSel();
 					driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
 					Thread.sleep(1000);
@@ -132,9 +137,13 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					elementClick("ctl00_ContentZone_BtnApply");
 					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaCreateDataFill_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreateDataFill.jpg");
 					elementClick("ctl00_ButtonsZone_BtnSubmit");
 					Thread.sleep(2000);
 					if (isAlertPresent()){
+						takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaErr_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreateErr.jpg");
 						String errorText = driver.switchTo().alert().getText();
 						System.out.println("No se puede crear Telecarga Promociones en función de Recarga debido a: "+errorText);
 						fail(errorText);
@@ -144,7 +153,9 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 						elementClick("ctl00_ButtonsZone_BtnDownload");
 						Thread.sleep(1000);
 						driver.switchTo().alert().accept();
-						Thread.sleep(1000);
+						Thread.sleep(2000);
+						takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaSuccess_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaSuccess.jpg");
 						String successMessage = driver.findElement(By.id("ctl00_LblError")).getText();
 						Thread.sleep(3000);
 						System.out.println("Telecarga de Promociones "+ promoSel[linkSel]+" ha sido creada y Envio de Telecarga: "+successMessage);
@@ -155,8 +166,12 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 			
 			public static void enfunciontransitos() throws Exception{	
 				Thread.sleep(1000);
+				takeScreenShot("E:\\Selenium\\","promoenFuncionTransito_"+timet+".jpg");
+				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransito.jpg");
 				elementClick("ctl00_ContentZone_BtnCreate");
 				Thread.sleep(1000);
+				takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoCreate_"+timet+".jpg");
+				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoCreate.jpg");
 				dateSel();
 				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
 				Thread.sleep(500);
@@ -190,10 +205,14 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					selectDropDown("ctl00_ContentZone_Categoria");
 					Thread.sleep(1000);
+					takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoCreateFillData_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoCreateFillData.jpg");
 					elementClick("ctl00_ButtonsZone_BtnSubmit");
 					Thread.sleep(2000);
 					if (isAlertPresent()){
 						String errorText = driver.switchTo().alert().getText();
+						takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoErr_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoErr.jpg");
 						System.out.println("No se puede crear Telecarga Promociones "+ promoSel[linkSel]+" debido a: "+errorText);
 						fail(errorText);
 						Thread.sleep(1000);
@@ -204,7 +223,9 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 						elementClick("ctl00_ButtonsZone_BtnDownload");
 						Thread.sleep(1000);
 						driver.switchTo().alert().accept();
-						Thread.sleep(1000);
+						Thread.sleep(2000);
+						takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoSuccess_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoSuccess.jpg");
 						String successMessage = driver.findElement(By.id("ctl00_LblError")).getText();
 						Thread.sleep(3000);
 						System.out.println("Telecarga de Promociones "+ promoSel[linkSel]+" ha sido creada y Envio de Telecarga: "+successMessage);
@@ -216,8 +237,12 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 			
 			public static void enfuncionhorario() throws Exception{
 				Thread.sleep(1000);
+				takeScreenShot("E:\\Selenium\\","promoenFuncionhorario_"+timet+".jpg");
+				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorario.jpg");
 				elementClick("ctl00_ContentZone_BtnCreate");
 				Thread.sleep(1000);
+				takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioCreate_"+timet+".jpg");
+				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioCreate.jpg");
 				dateSel();
 				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
 				Thread.sleep(500);
@@ -270,9 +295,13 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 				Thread.sleep(500);
 				driver.findElement(By.id("ctl00_ContentZone_porce_promotion_box_data")).sendKeys(ranNumbr(1,100)+"");
 				Thread.sleep(1000);
+				takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioCreateFillData_"+timet+".jpg");
+				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioCreateFillData.jpg");
 				elementClick("ctl00_ButtonsZone_BtnSubmit");
 				Thread.sleep(2000);
 				if (isAlertPresent()){
+					takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioErr_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioErr.jpg");
 					String errorText = driver.switchTo().alert().getText();
 					System.out.println("No se puede crear Telecarga Promociones "+ promoSel[linkSel]+" debido a: "+errorText);
 					fail(errorText);
@@ -284,7 +313,9 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					elementClick("ctl00_ButtonsZone_BtnDownload");
 					Thread.sleep(1000);
 					driver.switchTo().alert().accept();
-					Thread.sleep(1000);
+					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioSuccess_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioSuccess.jpg");
 					String successMessage = driver.findElement(By.id("ctl00_LblError")).getText();
 					Thread.sleep(3000);
 					System.out.println("Telecarga de Promociones "+ promoSel[linkSel]+" ha sido creada y Envio de Telecarga: "+successMessage);

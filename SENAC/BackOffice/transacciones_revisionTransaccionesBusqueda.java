@@ -47,25 +47,30 @@ public class transacciones_revisionTransaccionesBusqueda extends senacFieldsConf
 				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\");
 				try{
 					driver.get(baseUrl);
-					//takeScreenShot("loginpageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","loginpageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\","loginpageSenac.jpg");					
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homepageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\","homepageSenac.jpg");
 					Thread.sleep(2000);					
 					action.clickAndHold(driver.findElement(By.linkText("Transacciones"))).build().perform();
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Revisión de Transacciones")).click();								
-					Thread.sleep(1000);
+					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","revisionTransicionesPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\","revisionTransicionesPage.jpg");
 					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).clear();
 					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).sendKeys("01/01/2017");
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ContentZone_Button_transactions")).click();
-					Thread.sleep(2000);
+					Thread.sleep(3000);
+					takeScreenShot("E:\\Selenium\\","revisionTransicionesResults_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\","revisionTransicionesResults.jpg");
 					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
 					Thread.sleep(1500);
-					//takeScreenShot("RevisionTransaccionesBusqueda"+timet+".jpge");
 					System.out.println("Busqueda Completa: "+ elementsFound);
 					Thread.sleep(1000);
 				}catch(Exception e){
