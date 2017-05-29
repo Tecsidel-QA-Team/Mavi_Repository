@@ -46,17 +46,22 @@ public class BOHosttransacciones_verTransaccionesBusqueda extends senacFieldsCon
 				Actions action = new Actions(driver);
 				try{
 					driver.get(baseUrl);
-					//takeScreenShot("loginpagePlazaSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\Host_VerTranscciones\\attachments\\","loginHostSenacPage.jpg");
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePlazaPageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homeHostSenacPage"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\Host_VerTranscciones\\attachments\\","homeHostSenacPage.jpg");	
 					Thread.sleep(2000);					
 					action.clickAndHold(driver.findElement(By.linkText("Transacciones"))).build().perform();
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Ver transaciones")).click();								
 					Thread.sleep(1000);
+					takeScreenShot("E:\\Selenium\\","verTransaccionesPage"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\Host_VerTranscciones\\attachments\\","verTransaccionesPage.jpg");
+					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).clear();
 					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).sendKeys("15/05/2017");
 					Thread.sleep(1000);
@@ -64,6 +69,9 @@ public class BOHosttransacciones_verTransaccionesBusqueda extends senacFieldsCon
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ButtonsZone_BtnSearch")).click();
 					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","verTransaccionesResults"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\Host_VerTranscciones\\attachments\\","verTransaccionesRetults.jpg");
+					Thread.sleep(1000);
 					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
 					Thread.sleep(1500);
 					//takeScreenShot("PlazaverTransaccionesBusqueda"+timet+".jpge");
