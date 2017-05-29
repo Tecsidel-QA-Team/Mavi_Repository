@@ -46,15 +46,19 @@ public class gestionCuentas_seleccionarCuenta extends senacFieldsConfiguration{
 			}
 		@Test
 			public void senacGestionCuentasPage() throws Exception{
-				Actions action = new Actions(driver);				
+				Actions action = new Actions(driver);	
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\");
 				try{
 					driver.get(baseUrl);
+					takeScreenShot("E:\\Selenium\\","loginHostSenacPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","loginHostSenacPage.jpg");
 					//takeScreenShot("loginpageSenac"+timet+".jpge");
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homeSenacPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","homeSenacPage.jpg");					
 					Thread.sleep(1000);
 					action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 					Thread.sleep(1000);
@@ -65,11 +69,13 @@ public class gestionCuentas_seleccionarCuenta extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ButtonsZone_BtnSearch")).click();
 					Thread.sleep(1000);
-					//takeScreenShot("seleccionarCuentabyTag_"+timet+".jpg");
+					takeScreenShot("E:\\Selenium\\","seleccionarCuentabyTag_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","seleccionarCuentabyTag.jpg");					
 					Thread.sleep(1000);
 					driver.findElement(By.id("ctl00_ContentZone_BtnVehicles")).click();
 					Thread.sleep(1000);
-					//takeScreenShot("vehicleandTagAssigned_"+timet+".jpg");
+					takeScreenShot("E:\\Selenium\\","vehicleandTagAssigned_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","vehicleandTagAssigned.jpg");
 					Thread.sleep(1000);	
 					System.out.println("La cuenta se ha visualizado correctamente consultar los archivos de images de SeleccionarCuenta y TagAssigned para su verificación");
 					Thread.sleep(3000);

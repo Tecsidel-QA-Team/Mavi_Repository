@@ -44,14 +44,17 @@ public class operadores_CrearOperador extends senacFieldsConfiguration{
 		@Test
 			public void senacOperadoresPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\");
 				try{
 					driver.get(baseUrl);
-					//takeScreenShot("loginpageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","loginpageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","loginpageSenac.jpg");
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homepageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","homepageSenac.jpg");
 					Thread.sleep(1000);
 					action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
 					Thread.sleep(1000);
@@ -59,9 +62,12 @@ public class operadores_CrearOperador extends senacFieldsConfiguration{
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Gestión de operadores")).click();
 					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","gestionOperadoresPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","gestionOperadoresPage.jpg");
 					driver.findElement(By.id("ctl00_ContentZone_BtnCreate")).click(); // Botón crear operador
 					Thread.sleep(1500);
-					//takeScreenShot("operatorCrateScr"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","crearOperadoresPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","crearOperadoresPage.jpg");
 					Thread.sleep(500);
 					int opId = ranNumbr(1,99999);					
 					String opIdnumbr = String.valueOf(opId);
@@ -84,8 +90,13 @@ public class operadores_CrearOperador extends senacFieldsConfiguration{
 						Thread.sleep(3000);
 						driver.findElement(By.id(loginField)).sendKeys(opzero);
 						driver.findElement(By.id(passField)).sendKeys(opzero);
+						Thread.sleep(500);
+						takeScreenShot("E:\\Selenium\\","operatorLoginagain_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","operatorLoginagain.jpg");
 						driver.findElement(By.id(loginButton)).click();
 						Thread.sleep(4000);
+						takeScreenShot("E:\\Selenium\\","operatorIn_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","operatorIn.jpg");
 						System.out.println("El Operador "+opzero+" ha sido creado y entra correctamente a BackOffice");
 				}catch(Exception e){
 					e.printStackTrace();
@@ -106,6 +117,8 @@ public class operadores_CrearOperador extends senacFieldsConfiguration{
 			driver.findElement(By.id("ctl00_ContentZone_ChkHistorique")).click();
 			driver.findElement(By.id(hourNumber)).sendKeys(ranNumbr(1,999)+"");	
 			Thread.sleep(500);
+			takeScreenShot("E:\\Selenium\\","crearOperadoresPageDataFill_"+timet+".jpg");
+			takeScreenShot("E:\\workspace\\Mavi_Repository\\operadores_CrearOperador\\attachments\\","crearOperadoresPageDataFill.jpg");
 			driver.findElement(By.id(submitBtn)).click();
 			Thread.sleep(3000);
 	

@@ -60,7 +60,7 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 		@Test
 			public void senacPromocionesPage() throws Exception{
 			 	action = new Actions(driver);
-			 	
+			 	borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\");
 				try{
 					driver.get(baseUrl);
 					//takeScreenShot("loginpageSenac"+timet+".jpg");

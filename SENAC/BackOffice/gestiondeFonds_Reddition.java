@@ -45,18 +45,25 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
 		@Test
 			public void senacGestionTurnosPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\");
 				try{
 					driver.get("http://virtualbo-qa/BOQAPlazaSenac");
-					//takeScreenShot("loginpagePlazaSenac"+timet+".jpge");
+					Thread.sleep(1000);
+					takeScreenShot("E:\\Selenium\\","loginPlazatSenacPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","loginPlazaSenacPage.jpg");				
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePlazaPageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homePlazatSenacPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","homePlazaSenacPage.jpg");					
 					Thread.sleep(2000);					
 					action.clickAndHold(driver.findElement(By.linkText("Gestion des fonds"))).build().perform();
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Reddition")).click();								
+					Thread.sleep(1000);
+					takeScreenShot("E:\\Selenium\\","RedditionPage_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionPage.jpg");
 					Thread.sleep(1000);
 					selectDropDown("ctl00_ContentZone_cmb_numBags_cmb_dropdown");
 					Thread.sleep(1000);
@@ -104,6 +111,9 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
 					Thread.sleep(200);
 					driver.findElement(By.id("ctl00_ContentZone_NumberOM202")).sendKeys(ranNumbr(1000,10000)+"");
 					Thread.sleep(1000);
+					takeScreenShot("E:\\Selenium\\","RedditionPageDataFilled_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionPageDataFilled.jpg");
+					Thread.sleep(1000);
 					driver.findElement(By.id("ctl00_ButtonsZone_BtnSubmit")).click();
 					Thread.sleep(400);
 					if (isAlertPresent()){
@@ -112,12 +122,19 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					if (isAlertPresent()){
 						driver.switchTo().alert().accept();		
-						Thread.sleep(5000);
+						Thread.sleep(4000);
+						takeScreenShot("E:\\Selenium\\","RedditionCreated_"+timet+".jpg");
+						takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionCreated.jpg");
+						Thread.sleep(1000);
 						System.out.println("Se ha creado correctamente Reddition");
 					}else{
 						String nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
 						Thread.sleep(500);
 							if (nextPTitle.contains("Une erreur a été detectée")){
+								Thread.sleep(1500);
+								takeScreenShot("E:\\Selenium\\","RedditionErr_"+timet+".jpg");
+								takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionErr.jpg");
+								Thread.sleep(1000);
 								String errorCreation = driver.findElement(By.id("ctl00_ContentZone_lblMsg")).getText();
 								Thread.sleep(100);
 								System.out.println("ERROR AL CREAR REDDITION :"+errorCreation);

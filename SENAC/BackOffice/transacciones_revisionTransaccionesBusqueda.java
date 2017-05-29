@@ -44,6 +44,7 @@ public class transacciones_revisionTransaccionesBusqueda extends senacFieldsConf
 		@Test
 			public void senacGestionTurnosPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\transacciones_revisiónTransacciones\\attachments\\");
 				try{
 					driver.get(baseUrl);
 					//takeScreenShot("loginpageSenac"+timet+".jpge");

@@ -44,14 +44,17 @@ public class gestionTurnos_realizarBusqueda extends senacFieldsConfiguration{
 		@Test
 			public void senacGestionTurnosPage() throws Exception{
 				Actions action = new Actions(driver);
+				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\gestionTurnos_realizarBusqueda\\attachments\\");
 				try{
 					driver.get(baseUrl);
-					//takeScreenShot("loginpageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","loginpageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionTurnos_realizarBusqueda\\attachments\\","loginpageSenac.jpg");
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					//takeScreenShot("homePageSenac"+timet+".jpge");
+					takeScreenShot("E:\\Selenium\\","homepageSenac_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionTurnos_realizarBusqueda\\attachments\\","homepageSenac.jpg");
 					Thread.sleep(2000);					
 					action.clickAndHold(driver.findElement(By.linkText("Gestión de turno"))).build().perform();
 					Thread.sleep(1000);
@@ -62,6 +65,9 @@ public class gestionTurnos_realizarBusqueda extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ButtonsZone_BtnSearch")).click();
 					Thread.sleep(2000);
+					takeScreenShot("E:\\Selenium\\","searchResults_"+timet+".jpg");
+					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionTurnos_realizarBusqueda\\attachments\\","searchResults.jpg");
+					Thread.sleep(1000);
 					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
 					Thread.sleep(1500);
 					System.out.println(elementsFound);
