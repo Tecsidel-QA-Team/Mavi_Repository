@@ -52,10 +52,11 @@ public class senacFieldsConfiguration {
 	  public static Timestamp timest = new Timestamp (System.currentTimeMillis());
 	  public static String timet = timest.toString().replace("-", "").replace(" ", "").replace(":", "").substring(0,14);
 	  
-	  public static void takeScreenShot(String fname) throws Exception {
+	  public static void takeScreenShot(String pathS, String fname) throws Exception {
 		    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		    FileUtils.copyFile(scrFile, new File("C:\\Selenium\\", fname));
+		    FileUtils.copyFile(scrFile, new File(pathS, fname));
 	  }
+	  
 	  public static void selectDropDownClick2(String by)
       {
           Select vDropdown = new Select (driver.findElement(By.id(by)));
