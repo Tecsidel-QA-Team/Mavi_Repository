@@ -21,6 +21,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -53,28 +54,95 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
 					Thread.sleep(1000);
 					//takeScreenShot("homePlazaPageSenac"+timet+".jpge");
 					Thread.sleep(2000);					
-					action.clickAndHold(driver.findElement(By.linkText("Gestion des transactions"))).build().perform();
+					action.clickAndHold(driver.findElement(By.linkText("Gestion des fonds"))).build().perform();
 					Thread.sleep(1000);
-					driver.findElement(By.linkText("Voir transactions")).click();								
+					driver.findElement(By.linkText("Reddition")).click();								
 					Thread.sleep(1000);
-					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).clear();
-					driver.findElement(By.id("ctl00_ContentZone_dateSelector_dt_from_box_date")).sendKeys("15/05/2017");
+					selectDropDown("ctl00_ContentZone_cmb_numBags_cmb_dropdown");
 					Thread.sleep(1000);
-					selectDropDown("ctl00_ContentZone_cmb_vehicle_class_cmb_dropdown");
+					WebElement bagsnumbr = new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_numBags_cmb_dropdown"))).getFirstSelectedOption();
+					String bagNum = bagsnumbr.getText();
 					Thread.sleep(500);
-					driver.findElement(By.id("ctl00_ButtonsZone_BtnSearch")).click();
-					Thread.sleep(2000);
-					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
-					Thread.sleep(1500);
-					//takeScreenShot("PlazaverTransaccionesBusqueda"+timet+".jpge");
-					System.out.println("Busqueda Completa: "+ elementsFound);
+					for (int i=1; i <=Integer.parseInt(bagNum);i++){
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C5_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C10_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C25_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C50_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C100_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C200_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);						
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C250_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C500_"+i)).sendKeys(ranNumbr(1,4)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N500_"+i)).sendKeys(ranNumbr(1,5)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N1000_"+i)).sendKeys(ranNumbr(1,5)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N2000_"+i)).sendKeys(ranNumbr(1,5)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N5000_"+i)).sendKeys(ranNumbr(1,5)+"");
+						Thread.sleep(200);
+						driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N10000_"+i)).sendKeys(ranNumbr(1,5)+"");
+					}
+					Thread.sleep(500);
+					driver.findElement(By.id("ctl00_ContentZone_NumberCH201")).sendKeys(ranNumbr(1,5)+"");
+					Thread.sleep(200);
+					driver.findElement(By.id("ctl00_ContentZone_NumberCH202")).sendKeys(ranNumbr(1000,10000)+"");
+					Thread.sleep(200);
+					driver.findElement(By.id("ctl00_ContentZone_NumberVO01201")).sendKeys(ranNumbr(1,5)+"");
+					Thread.sleep(200);
+					driver.findElement(By.id("ctl00_ContentZone_NumberVO01202")).sendKeys(ranNumbr(1000,10000)+"");
+					Thread.sleep(200);
+					driver.findElement(By.id("ctl00_ContentZone_NumberOM201")).sendKeys(ranNumbr(1,5)+"");
+					Thread.sleep(200);
+					driver.findElement(By.id("ctl00_ContentZone_NumberOM202")).sendKeys(ranNumbr(1000,10000)+"");
 					Thread.sleep(1000);
+					driver.findElement(By.id("ctl00_ButtonsZone_BtnSubmit")).click();
+					Thread.sleep(400);
+					if (isAlertPresent()){
+						driver.switchTo().alert().accept();
+					}
+					Thread.sleep(500);
+					if (isAlertPresent()){
+						driver.switchTo().alert().accept();		
+						Thread.sleep(5000);
+						System.out.println("Se ha creado correctamente Reddition");
+					}else{
+						String nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
+						Thread.sleep(500);
+							if (nextPTitle.contains("Une erreur a été detectée")){
+								String errorCreation = driver.findElement(By.id("ctl00_ContentZone_lblMsg")).getText();
+								Thread.sleep(100);
+								System.out.println("ERROR AL CREAR REDDITION :"+errorCreation);
+								fail(errorCreation);
+								return;
+							}
+						
+					}
+					
+					Thread.sleep(5000);
 
 				}catch(Exception e){
 					e.printStackTrace();
 					fail();
 				}
-		}				
+		}	
+		public static boolean isAlertPresent(){
+		    try{
+		        driver.switchTo().alert();
+		        return true;
+		    }catch (NoAlertPresentException e){
+		        return false;
+		    }
+		}
+		
 		@After
 			public void tearDown() throws Exception{			  
 				    driver.quit();
