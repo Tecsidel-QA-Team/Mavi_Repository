@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<result plugin="junit@1.20">
+  <suites>
+    <suite>
+      <file>E:\workspace\Mavi_Repository\gestionTurnos_realizarBusqueda\junit\TEST-BackOffice.gestionTurnos_realizarBusqueda.xml</file>
+      <name>BackOffice.gestionTurnos_realizarBusqueda</name>
+      <stdout>Mostrando del 1 al 12 de 67
+</stdout>
+      <stderr>Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 1673
+Only local connections are allowed.
+may 30, 2017 12:08:07 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+</stderr>
+      <duration>21.59</duration>
+      <timestamp>2017-05-30T10:08:03</timestamp>
+      <time>21.59</time>
+      <cases>
+        <case>
+          <duration>21.266</duration>
+          <className>BackOffice.gestionTurnos_realizarBusqueda</className>
+          <testName>senacGestionTurnosPage</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>21.59</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

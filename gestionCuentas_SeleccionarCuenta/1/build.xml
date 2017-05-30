@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>franklyn.noyola</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.tasks.junit.TestResultAction plugin="junit@1.20">
+      <descriptions class="concurrent-hash-map"/>
+      <failCount>1</failCount>
+      <skipCount>0</skipCount>
+      <totalCount>1</totalCount>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <testData/>
+    </hudson.tasks.junit.TestResultAction>
+    <hudson.tasks.MailMessageIdAction plugin="mailer@1.20">
+      <messageId>&lt;24568575.4.1496137703469.JavaMail.VIRTUALQA-AUTOM$@VirtualQA-Autom&gt;</messageId>
+    </hudson.tasks.MailMessageIdAction>
+  </actions>
+  <queueId>38</queueId>
+  <timestamp>1496137684571</timestamp>
+  <startTime>1496137684573</startTime>
+  <result>UNSTABLE</result>
+  <duration>18122</duration>
+  <charset>windows-1252</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>E:\workspace\Mavi_Repository\gestionCuentas_seleccionarCuenta</workspace>
+  <hudsonVersion>2.63</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

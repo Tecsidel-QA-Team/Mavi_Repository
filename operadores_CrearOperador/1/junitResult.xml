@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<result plugin="junit@1.20">
+  <suites>
+    <suite>
+      <file>E:\workspace\Mavi_Repository\operadores_CrearOperador\junit\TEST-BackOffice.operadores_CrearOperador.xml</file>
+      <name>BackOffice.operadores_CrearOperador</name>
+      <stdout>El Operador 19591 ha sido creado y entra correctamente a BackOffice
+</stdout>
+      <stderr>Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 25076
+Only local connections are allowed.
+may 30, 2017 12:05:40 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+</stderr>
+      <duration>37.668</duration>
+      <timestamp>2017-05-30T10:05:37</timestamp>
+      <time>37.668</time>
+      <cases>
+        <case>
+          <duration>37.328</duration>
+          <className>BackOffice.operadores_CrearOperador</className>
+          <testName>senacOperadoresPage</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>37.668</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

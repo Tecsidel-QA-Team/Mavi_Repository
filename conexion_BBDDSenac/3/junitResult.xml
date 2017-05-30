@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<result plugin="junit@1.20">
+  <suites>
+    <suite>
+      <file>E:\workspace\Mavi_Repository\conexion_BBDDSenac\junit\TEST-BackOffice.conexión_BBDDSenac.xml</file>
+      <name>BackOffice.conexión_BBDDSenac</name>
+      <stdout></stdout>
+      <stderr></stderr>
+      <duration>6.154</duration>
+      <timestamp>2017-05-30T10:00:23</timestamp>
+      <time>6.154</time>
+      <cases>
+        <case>
+          <duration>5.716</duration>
+          <className>BackOffice.conexión_BBDDSenac</className>
+          <testName>dataBaseConnection</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>6.154</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

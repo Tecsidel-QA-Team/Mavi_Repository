@@ -1,0 +1,29 @@
+Started by user [8mha:////4B0oH7dCi+DoR8lLxi6guWP+XoKmeo2D9hw2LSNRqL+1AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzJEgZR/dLi1CL9tKLEvOycyjy9vPzK/JxEAELgG+TKAAAA[0mFranklyn R. Garcia Noyola
+Building in workspace E:\workspace\Mavi_Repository\Plaza_VerTranscciones
+No emails were triggered.
+[Mavi_Repository] $ cmd.exe /C "C:\apache-ant-1.10.1\bin\ant.bat -file BOPlazatransacciones_verTransaccionesBusqueda.xml BOPlazatransacciones_verTransaccionesBusqueda && exit %%ERRORLEVEL%%"
+Buildfile: E:\workspace\Mavi_Repository\BOPlazatransacciones_verTransaccionesBusqueda.xml
+
+[8mha:////4G0i4FssbyG03DXxdyyTg9hZXApxxs4NV/6FsUgUoVOXAAAAYB+LCAAAAAAAAP9b85aBtbiIQT6jNKU4P0+vJLE4u1gvPjGvRM8xryQksSg9tcQvvyTVvqNr/s+Vl9uYGBgqihikoKqT8/OK83NS9ZwhNEghAwQwghQWAADROOumXQAAAA==[0mBOPlazatransacciones_verTransaccionesBusqueda:
+    [junit] Running BackOffice.BOPlazatransacciones_verTransaccionesBusqueda
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23,988 sec
+    [junit] Output:
+    [junit] Busqueda Completa: Affichage de 1 à 18 sur 2131
+    [junit] 
+    [junit] Error: 
+    [junit] Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 32851
+    [junit] Only local connections are allowed.
+    [junit] may 30, 2017 12:00:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+    [junit] INFO: Detected dialect: OSS
+    [junit] 
+
+[8mha:////4LtWGwsf4zMIgdGLIK1fJll9ZHfX81ZkqCRkV9SIcmrYAAAAYB+LCAAAAAAAAP9b85aBtbiIQSGjNKU4P0+vJLE4u1gvPjGvRM8xr8S/tCQ5PzfVL78ktUuDM0uMry+HiYGhoohBCqo8OT+vOD8nVc8ZQoMUMkAAI0hhAQAUXUdTXgAAAA==[0mBUILD SUCCESSFUL
+Total time: 25 seconds
+Recording test results
+Email was triggered for: Always
+Email was triggered for: Success
+Sending email for trigger: Always
+Sending email to: franklyn.garcia@tecsidel.es amalia.garrido@tecsidel.es
+Sending email for trigger: Success
+An attempt to send an e-mail to empty list of recipients, ignored.
+Finished: SUCCESS

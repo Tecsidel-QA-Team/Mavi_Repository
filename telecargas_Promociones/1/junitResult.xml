@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<result plugin="junit@1.20">
+  <suites>
+    <suite>
+      <file>E:\workspace\Mavi_Repository\telecargas_Promociones\junit\TEST-BackOffice.telecargas_Promociones.xml</file>
+      <name>BackOffice.telecargas_Promociones</name>
+      <stdout>Telecarga de Promociones En función de recarga ha sido creada y Envio de Telecarga: OK: Nueva telecarga &apos;promotions&apos; versión &apos;419&apos;
+</stdout>
+      <stderr>Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 47853
+Only local connections are allowed.
+may 30, 2017 12:09:11 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+</stderr>
+      <duration>41.1</duration>
+      <timestamp>2017-05-30T10:09:08</timestamp>
+      <time>41.1</time>
+      <cases>
+        <case>
+          <duration>40.675</duration>
+          <className>BackOffice.telecargas_Promociones</className>
+          <testName>senacPromocionesPage</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>41.1</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

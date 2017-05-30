@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<result plugin="junit@1.20">
+  <suites>
+    <suite>
+      <file>E:\workspace\Mavi_Repository\Host_VerTranscciones\junit\TEST-BackOffice.BOHosttransacciones_verTransaccionesBusqueda.xml</file>
+      <name>BackOffice.BOHosttransacciones_verTransaccionesBusqueda</name>
+      <stdout>Busqueda Completa: Mostrando del 1 al 7 de 7
+</stdout>
+      <stderr>Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 25827
+Only local connections are allowed.
+may 30, 2017 11:43:41 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+</stderr>
+      <duration>26.857</duration>
+      <timestamp>2017-05-30T09:43:36</timestamp>
+      <time>26.857</time>
+      <cases>
+        <case>
+          <duration>26.357</duration>
+          <className>BackOffice.BOHosttransacciones_verTransaccionesBusqueda</className>
+          <testName>senacverTransaccionessPage</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>26.857</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

@@ -1,0 +1,20 @@
+Started by user [8mha:////4B0oH7dCi+DoR8lLxi6guWP+XoKmeo2D9hw2LSNRqL+1AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzJEgZR/dLi1CL9tKLEvOycyjy9vPzK/JxEAELgG+TKAAAA[0mFranklyn R. Garcia Noyola
+Building in workspace E:\workspace\Mavi_Repository\conexion_BBDDSenac
+No emails were triggered.
+[Mavi_Repository] $ cmd.exe /C "C:\apache-ant-1.10.1\bin\ant.bat -file conexión_BBDDSenac.xml conexión_BBDDSenac && exit %%ERRORLEVEL%%"
+Buildfile: E:\workspace\Mavi_Repository\conexión_BBDDSenac.xml
+
+[8mha:////4G0i4FssbyG03DXxdyyTg9hZXApxxs4NV/6FsUgUoVOXAAAAYB+LCAAAAAAAAP9b85aBtbiIQT6jNKU4P0+vJLE4u1gvPjGvRM8xryQksSg9tcQvvyTVvqNr/s+Vl9uYGBgqihikoKqT8/OK83NS9ZwhNEghAwQwghQWAADROOumXQAAAA==[0mconexión_BBDDSenac:
+    [junit] Running BackOffice.conexión_BBDDSenac
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3,689 sec
+
+[8mha:////4LtWGwsf4zMIgdGLIK1fJll9ZHfX81ZkqCRkV9SIcmrYAAAAYB+LCAAAAAAAAP9b85aBtbiIQSGjNKU4P0+vJLE4u1gvPjGvRM8xr8S/tCQ5PzfVL78ktUuDM0uMry+HiYGhoohBCqo8OT+vOD8nVc8ZQoMUMkAAI0hhAQAUXUdTXgAAAA==[0mBUILD SUCCESSFUL
+Total time: 5 seconds
+Recording test results
+Email was triggered for: Always
+Email was triggered for: Success
+Sending email for trigger: Always
+An attempt to send an e-mail to empty list of recipients, ignored.
+Sending email for trigger: Success
+An attempt to send an e-mail to empty list of recipients, ignored.
+Finished: SUCCESS

@@ -1,0 +1,30 @@
+Started by user [8mha:////4B0oH7dCi+DoR8lLxi6guWP+XoKmeo2D9hw2LSNRqL+1AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzJEgZR/dLi1CL9tKLEvOycyjy9vPzK/JxEAELgG+TKAAAA[0mFranklyn R. Garcia Noyola
+Building in workspace E:\workspace\Mavi_Repository\telecargas_Promociones
+No emails were triggered.
+[Mavi_Repository] $ cmd.exe /C "C:\apache-ant-1.10.1\bin\ant.bat -file telecargas_Promociones.xml telecargas_Promociones && exit %%ERRORLEVEL%%"
+Buildfile: E:\workspace\Mavi_Repository\telecargas_Promociones.xml
+
+[8mha:////4G0i4FssbyG03DXxdyyTg9hZXApxxs4NV/6FsUgUoVOXAAAAYB+LCAAAAAAAAP9b85aBtbiIQT6jNKU4P0+vJLE4u1gvPjGvRM8xryQksSg9tcQvvyTVvqNr/s+Vl9uYGBgqihikoKqT8/OK83NS9ZwhNEghAwQwghQWAADROOumXQAAAA==[0mtelecargas_Promociones:
+    [mkdir] Created dir: E:\workspace\Mavi_Repository\telecargas_Promociones\junit
+    [junit] Running BackOffice.telecargas_Promociones
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 41,1 sec
+    [junit] Output:
+    [junit] Telecarga de Promociones En función de recarga ha sido creada y Envio de Telecarga: OK: Nueva telecarga 'promotions' versión '419'
+    [junit] 
+    [junit] Error: 
+    [junit] Starting ChromeDriver 2.28.455520 (cc17746adff54984afff480136733114c6b3704b) on port 47853
+    [junit] Only local connections are allowed.
+    [junit] may 30, 2017 12:09:11 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+    [junit] INFO: Detected dialect: OSS
+    [junit] 
+
+[8mha:////4LtWGwsf4zMIgdGLIK1fJll9ZHfX81ZkqCRkV9SIcmrYAAAAYB+LCAAAAAAAAP9b85aBtbiIQSGjNKU4P0+vJLE4u1gvPjGvRM8xr8S/tCQ5PzfVL78ktUuDM0uMry+HiYGhoohBCqo8OT+vOD8nVc8ZQoMUMkAAI0hhAQAUXUdTXgAAAA==[0mBUILD SUCCESSFUL
+Total time: 42 seconds
+Recording test results
+Email was triggered for: Always
+Email was triggered for: Success
+Sending email for trigger: Always
+Sending email to: franklyn.garcia@tecsidel.es amalia.garrido@tecsidel.es
+Sending email for trigger: Success
+An attempt to send an e-mail to empty list of recipients, ignored.
+Finished: SUCCESS
