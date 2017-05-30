@@ -29,7 +29,6 @@
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/neko-htmlunit-2.24.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/phantomjsdriver-1.4.0.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/selenium-server-standalone-3.3.1.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/serializer-2.7.2.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/tools.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/websocket-api-9.2.20.v20161216.jar"/>
@@ -39,5 +38,6 @@
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="E:/workspace/Mavi_Repository/lib/selenium-server-standalone-3.4.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
