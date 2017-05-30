@@ -69,6 +69,19 @@ public class gestionCuentas_seleccionarCuenta extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ButtonsZone_BtnSearch")).click();
 					Thread.sleep(1000);
+					String nextPageS = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
+					Thread.sleep(200);
+						if (nextPageS.equals("Selección de cuenta")){
+							String errorSearch = driver.findElement(By.id("ctl00_LblError")).getText(); 
+							if(errorSearch.equals("Luhn incorrecto")){
+								Thread.sleep(500);
+								takeScreenShot("E:\\Selenium\\","SearchErr"+timet+".jpg");
+								takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","SearchErr.jpg");
+								System.out.println("ERROR AL TRATAR DE BUSCAR TAG, debido a: " + errorSearch);
+								fail("ERROR BUSQUEDA TAG: "+errorSearch);
+								return;
+							}
+						}
 					takeScreenShot("E:\\Selenium\\","seleccionarCuentabyTag_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_SeleccionarCuenta\\attachments\\","seleccionarCuentabyTag.jpg");					
 					Thread.sleep(1000);
