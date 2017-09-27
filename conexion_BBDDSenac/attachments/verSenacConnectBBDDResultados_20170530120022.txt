@@ -1,7 +1,0 @@
-    MSGTYPE             MSGTIME         
----------------------------------------
-CashOut             20170321094153      
-Passage             20170310121701      
-PassageCdUpdate     20170321152039      
-PrepayMng           20170310121647      
-StateChange         20170310121347      
