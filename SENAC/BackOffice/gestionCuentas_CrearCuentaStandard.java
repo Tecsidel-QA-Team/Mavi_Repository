@@ -67,10 +67,15 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 		private static String [][] autoBusModels = {{"DAIMLER-BENZ","VOLVO"},{"512-CDI","FM-12380"},{"DB 605","FM 300"}};
 		
 		
+/*public static void main (String [] args) throws Exception{
+		setUp();
+		senacGestionCuentasPage();
+		tearDown();
+}*/
 		
 		
 @Before
-		public void setUp() throws Exception{
+public void setUp() {
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
     			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true
@@ -81,20 +86,21 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
     				driver.manage().window().maximize();	
     				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			}
-		@Test
-			public void senacGestionCuentasPage() throws Exception{
+
+@Test
+public void senacGestionCuentasPage() throws Exception{
 				Actions action = new Actions(driver);			
 				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\");
 				try{
 					driver.get(baseUrl);
-					takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","loginHostSenacPage.jpg");
+					//takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","loginHostSenacPage.jpg");
 					driver.findElement(By.id(loginField)).sendKeys("00001");
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
-					takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","homeHostSenacPage.jpg");
+					//takeScreenShot("E:\\Selenium\\","loginHostSenacPage"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","homeHostSenacPage.jpg");
 					Thread.sleep(1000);
 					action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 					Thread.sleep(1000);
@@ -102,8 +108,8 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Standard")).click();
 					Thread.sleep(1000);
-					takeScreenShot("E:\\Selenium\\","operatorCreatorPage"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","operatorCreatorPage.jpg");
+					//takeScreenShot("E:\\Selenium\\","operatorCreatorPage"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","operatorCreatorPage.jpg");
 					Thread.sleep(1000);
 					String accountNmbr = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
 					accountNumbrT = accountNmbr.substring(7, 16);
@@ -180,7 +186,7 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 				driver.findElement(By.id(workPhone)).sendKeys(workPhone1[2]);
 				driver.findElement(By.id(perPhone)).sendKeys(ranNumbr(900000000,999999999)+"");
 				driver.findElement(By.id(faxPhone)).sendKeys(workPhone1[selOp]);
-				Thread.sleep(000);								
+				Thread.sleep(1000);								
 			}
 			selOpt = ranNumbr(0,1);
 			if (selOpt==0){
@@ -280,8 +286,8 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 						elementClick("ctl00_ContentZone_ctrlAccountNotes_chk_internet_access");//Habilitada click
 					}
 					Thread.sleep(1000);
-					takeScreenShot("E:\\Selenium\\","accountDataFill"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","accountDataFill.jpg");
+					//takeScreenShot("E:\\Selenium\\","accountDataFill"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","accountDataFill.jpg");
 					Thread.sleep(5000);
 		}
 		public static void crearVehiculo() throws Exception{
@@ -291,6 +297,7 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 			int matlet1 = ranNumbr(1,matletT.length());
 			int matlet2 = ranNumbr(1,matletT.length());
 			matriNu = String.valueOf(matNum+matletT.substring(matlet, matlet+1)+matletT.substring(matlet1, matlet1+1)+matletT.substring(matlet2, matlet2+1));
+			//new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_vehicle_type"))).selectByVisibleText("Coche");
 			selectDropDown("ctl00_ContentZone_cmb_vehicle_type");
 			Thread.sleep(1000);
 			WebElement vehtype = new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_vehicle_type"))).getFirstSelectedOption();
@@ -361,8 +368,8 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 					vehtypeModel = String.valueOf(furgonetaModels[0][carSel]);
 					vehtypeKind = String.valueOf(furgonetaModels[carModel][carModelSel]);
 			}
-			takeScreenShot("E:\\Selenium\\","vehiculeCreatePage"+timet+".jpg");
-			takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","vehiculeCreatePage.jpg");
+			//takeScreenShot("E:\\Selenium\\","vehiculeCreatePage"+timet+".jpg");
+			//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","vehiculeCreatePage.jpg");
 			
 		}
 		public static void vehicleFieldsfill(String Matricul, String vehtypeM, String vehtypeK, String ColorT) throws Exception{
@@ -392,28 +399,28 @@ public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration
 			confirmationMessage = driver.findElement(By.id("ctl00_ContentZone_lbl_information")).getText();
 				if (confirmationMessage.contains("ya tiene un tag asignado") || confirmationMessage.contains("Este tag no está operativo") || confirmationMessage.contains("Este tag ya está asignado al vehículo") || confirmationMessage.contains("Luhn incorrecto")){
 					errorTagAssignment = true;
-					takeScreenShot("E:\\Selenium\\","tagAssignmentPageErr"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","tagAssignmentPageErr.jpg");
+					//takeScreenShot("E:\\Selenium\\","tagAssignmentPageErr"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","tagAssignmentPageErr.jpg");
 					
 				}else{
 					tagIdNmbr = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_m_table_vehicles']/tbody/tr[2]/td[6]")).getText();
-					takeScreenShot("E:\\Selenium\\","tagAssignmentPage"+timet+".jpg");
-					takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","tagAssignmentPage.jpg");
+					//takeScreenShot("E:\\Selenium\\","tagAssignmentPage"+timet+".jpg");
+					//takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionCuentas_CrearCuenta\\attachments\\","tagAssignmentPage.jpg");
 				}
 			Thread.sleep(1000);
 			
 		}
 		
 		
-		@After
-			public void tearDown() throws Exception{			  
+@After
+public void tearDown() {			  
 				    driver.quit();
 				    String verificationErrorString = verificationErrors.toString();
 				    if (!"".equals(verificationErrorString)) {
 				      fail(verificationErrorString);
-				    }
+}
 				  
-		}
+	}
 			
 		
 		

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,14 +36,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class telecargas_Promociones extends senacFieldsConfiguration{
-		private static String [][]  dateS = {{"01","02","03","04","05","06","07","08","09","10", "11","12"},{"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre", "Octubre", "Noviembre", "Diciembre"}};
-		private static int dateDFrom;;
+		private static String []  dateS = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre", "Octubre", "Noviembre", "Diciembre"};
 		private static String [] telP = {"ctl00_ContentZone_Prepay", "ctl00_ContentZone_Postpay"};
-		private static int dateMFrom;
 		private static String [] promoSel = {"En función de recarga", "En función de tránsitos", "En función del horario"};
 		private static Actions action;
+		private static int dateMFrom;
+		private static int dateMFromR;
 		private static int linkSel;
-		private static String dateDfromT;
+		private static String errorText; 
+		private static Calendar calT;
+		private static Calendar calF;
+		private static SimpleDateFormat sft;
 		private static String [] weekDay = {"ctl00_ContentZone_chk_lundi","ctl00_ContentZone_chk_mardi","ctl00_ContentZone_chk_mercredi","ctl00_ContentZone_chk_jeudi","ctl00_ContentZone_chk_vendredi","ctl00_ContentZone_chk_samedi","ctl00_ContentZone_chk_dimanche"};
 		
 @Before
@@ -69,6 +73,12 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					driver.findElement(By.id(passField)).sendKeys("00001");
 					driver.findElement(By.id(loginButton)).click();
 					Thread.sleep(1000);
+					dateMFrom = ranNumbr(0,12);
+					if (dateMFrom>=12){
+						dateMFromR = dateMFrom-1;
+					}else{
+						dateMFromR = dateMFrom;
+					}
 					takeScreenShot("E:\\Selenium\\","homepageSenac_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","homepageSenac.jpg");
 					Thread.sleep(1000);
@@ -91,7 +101,8 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					}
 				}catch(Exception e){
 					e.printStackTrace();
-					fail();
+					System.out.println("No se puede crear Telecarga Promociones "+ promoSel[linkSel]+ " debido a: "+errorText);
+					fail(errorText);
 				}			
 		}			
 			
@@ -103,19 +114,15 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaCreate_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreate.jpg");
 					dateSel();
-					driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
+					driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[dateMFromR]);
 					Thread.sleep(1000);
 					driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).clear(); 
-					driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom]+"/2017");
+					driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(sft.format(calF.getTime()));
 					Thread.sleep(1000);
 					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).clear();
-					if (dateMFrom == 11){						
-						driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys("01/01/2018");	
-					}else{						
-						driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom+1]+"/2017");
-					}	
+					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(sft.format(calT.getTime()));
 					Thread.sleep(500);
-					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("Nueva Promoción para "+dateS[1][dateMFrom]);
+					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("Nueva Promoción para "+dateS[dateMFromR]);
 					Thread.sleep(500);
 					selectDropDown("ctl00_ContentZone_CboType");
 					Thread.sleep(1000);
@@ -140,13 +147,11 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaCreateDataFill_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreateDataFill.jpg");
 					elementClick("ctl00_ButtonsZone_BtnSubmit");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					if (isAlertPresent()){
+						errorText = driver.switchTo().alert().getText();
 						takeScreenShot("E:\\Selenium\\","promoenFuncionRecargaErr_"+timet+".jpg");
 						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionRecargaCreateErr.jpg");
-						String errorText = driver.switchTo().alert().getText();
-						System.out.println("No se puede crear Telecarga Promociones en función de Recarga debido a: "+errorText);
-						fail(errorText);
 						return;
 					}else{
 						Thread.sleep(1000);
@@ -173,17 +178,14 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 				takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoCreate_"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoCreate.jpg");
 				dateSel();
-				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
+				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[dateMFromR]);
 				Thread.sleep(500);
 				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).clear(); 
-				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom]+"/2017");
+				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(sft.format(calF.getTime()));
 				Thread.sleep(1000);
 				driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).clear();
-				if (dateMFrom == 11){						
-					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys("01/01/2018");	
-				}else{						
-					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom+1]+"/2017");
-				}	
+				driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(sft.format(calT.getTime()));
+			
 				Thread.sleep(1000);
 					if (ranNumbr(1,2)<2){
 						driver.findElement(By.id(telP[ranNumbr(0,1)])).click();
@@ -197,9 +199,9 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					Thread.sleep(500);
 					driver.findElement(By.id("ctl00_ContentZone_TXTPassageGratuit_box_data")).sendKeys(ranNumbr(1,999)+"");
 					Thread.sleep(500);
-					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotionTFI_box_data")).sendKeys("Promoción de "+dateS[1][dateMFrom]);
+					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotionTFI_box_data")).sendKeys("Promoción de "+dateS[dateMFromR]);
 					Thread.sleep(500);
-					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("La Nueva Promoción de "+dateS[1][dateMFrom]);
+					driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("La Nueva Promoción de "+dateS[dateMFromR]);
 					Thread.sleep(500);
 					selectDropDown("ctl00_ContentZone_Vias");
 					Thread.sleep(500);
@@ -208,14 +210,11 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 					takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoCreateFillData_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoCreateFillData.jpg");
 					elementClick("ctl00_ButtonsZone_BtnSubmit");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					if (isAlertPresent()){
-						String errorText = driver.switchTo().alert().getText();
+						errorText = driver.switchTo().alert().getText();
 						takeScreenShot("E:\\Selenium\\","promoenFuncionTransitoErr_"+timet+".jpg");
 						takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionTransitoErr.jpg");
-						System.out.println("No se puede crear Telecarga Promociones "+ promoSel[linkSel]+" debido a: "+errorText);
-						fail(errorText);
-						Thread.sleep(1000);
 						return;
 	
 					}else{
@@ -244,19 +243,15 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 				takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioCreate_"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioCreate.jpg");
 				dateSel();
-				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[1][dateMFrom]);
+				driver.findElement(By.id("ctl00_ContentZone_txtNom_box_data")).sendKeys("PROMO_"+dateS[dateMFromR]);
 				Thread.sleep(500);
 				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).clear(); 
-				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom]+"/2017");
+				driver.findElement(By.id("ctl00_ContentZone_dtmfrom_box_date")).sendKeys(sft.format(calF.getTime()));
 				Thread.sleep(1000);
 				driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).clear();
-				if (dateMFrom == 11){						
-					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys("01/01/2018");	
-				}else{						
-					driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(dateDfromT+"/"+dateS[0][dateMFrom+1]+"/2017");
-				}
+				driver.findElement(By.id("ctl00_ContentZone_dtmTo_box_date")).sendKeys(sft.format(calT.getTime()));
 				Thread.sleep(500);
-				driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("La Nueva Promoción de "+dateS[1][dateMFrom]);
+				driver.findElement(By.id("ctl00_ContentZone_TXtMsgPromotion_box_data")).sendKeys("La Nueva Promoción de "+dateS[dateMFromR]);
 				Thread.sleep(500);
 				selectDropDown("ctl00_ContentZone_Vias");
 				Thread.sleep(500);
@@ -298,14 +293,11 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 				takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioCreateFillData_"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioCreateFillData.jpg");
 				elementClick("ctl00_ButtonsZone_BtnSubmit");
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 				if (isAlertPresent()){
+					errorText = driver.switchTo().alert().getText();
 					takeScreenShot("E:\\Selenium\\","promoenFuncionhorarioErr_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mavi_Repository\\telecargas_Promociones\\attachments\\","promoenFuncionhorarioErr.jpg");
-					String errorText = driver.switchTo().alert().getText();
-					System.out.println("No se puede crear Telecarga Promociones "+ promoSel[linkSel]+" debido a: "+errorText);
-					fail(errorText);
-					Thread.sleep(1000);
 					return;
 
 				}else{
@@ -335,32 +327,12 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 		    }
 		}
 		public static void dateSel() throws Exception{
-			Calendar cal = Calendar.getInstance();
-			int montL = cal.get(Calendar.MONTH);
-			dateMFrom = ranNumbr(0,11);
-				if (dateMFrom >= montL){
-					if (montL < 11){
-						dateMFrom = dateMFrom +1;
-				}else{
-					dateMFrom = dateMFrom+0;
-				}
-			}
-			if (dateMFrom ==0 || dateMFrom ==2 || dateMFrom ==4 || dateMFrom ==6 || dateMFrom ==7 || dateMFrom ==9 || dateMFrom ==11){
-				dateDFrom = ranNumbr(1,31);
-			}
-			if (dateMFrom ==3 || dateMFrom ==5 || dateMFrom ==8 || dateMFrom ==10){
-				dateDFrom = ranNumbr(1,30);
-			}
-			if (dateMFrom == 1){
-				dateDFrom = ranNumbr(1,28);
-			}
-			
-			;
-			if (dateDFrom < 10){
-				dateDfromT = "0".concat(String.valueOf(dateDFrom));
-			}else{
-				dateDfromT = String.valueOf(dateDFrom);
-			}	
+				calF = Calendar.getInstance();
+				calT = Calendar.getInstance();
+			 sft = new SimpleDateFormat("dd/MM/yyyy");
+			calF.set(ranNumbr(2017,2018), dateMFrom, ranNumbr(1,31));
+			calT.set(ranNumbr(2017,2018), ranNumbr(1,12), ranNumbr(1,31));
+	
 		}
 		
 		@After
@@ -374,7 +346,5 @@ public class telecargas_Promociones extends senacFieldsConfiguration{
 		}
 			
 		
-		
-	  //Edit buttons icons configuration.	  
 	      	
 }

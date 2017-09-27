@@ -29,7 +29,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
-		
+		private String nextPTitle;
 @Before
 		public void setUp() throws Exception{
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
@@ -42,10 +42,14 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
     				driver.manage().window().maximize();	
     				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			}
-		@Test
-			public void senacGestionTurnosPage() throws Exception{
+@Test
+public void senacGestionTurnosPage() throws Exception{
 				Actions action = new Actions(driver);
+				projectSel = "Proyecto de test";
+				fileDatafilled = "RedditionPageDataFilled";
+				folderSel = "E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments";
 				borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\");
+				fileError = "RedditionErr";
 				try{
 					driver.get("http://virtualbo-qa/BOQAPlazaSenac");
 					Thread.sleep(1000);
@@ -119,26 +123,67 @@ public class gestiondeFonds_Reddition extends senacFieldsConfiguration{
 					if (isAlertPresent()){
 						driver.switchTo().alert().accept();
 					}
-					Thread.sleep(500);
+					Thread.sleep(3000);
+					if (!isAlertPresent()){
+					Thread.sleep(3000);
+					nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
+					if (nextPTitle.contains("Reddition")){
+						errorLev = driver.findElement(By.id("ctl00_LblError")).getText();
+						if (errorLev.contains("une erreur interne")){
+							additionalTitle = "No se puede crear Reddition a causa de: ";
+							descriptionSubject ="No se ha podido crear una Reddition debido a un error en la creación, mirar el arhivo RedditionErr.jpg para mas detalles";
+							System.out.println(errorLev);
+							takeScreenShot("E:\\Selenium\\",fileError+"_"+timet+".jpg");
+							takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\",fileError+".jpg");
+							Thread.sleep(1000);
+							crearIncidenciaRedMine.createIncidence();
+							fail(errorLev);
+						return;
+						}
+						}
+					}
 					if (isAlertPresent()){
 						driver.switchTo().alert().accept();		
 						Thread.sleep(4000);
-						takeScreenShot("E:\\Selenium\\","RedditionCreated_"+timet+".jpg");
-						takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionCreated.jpg");
-						Thread.sleep(1000);
-						System.out.println("Se ha creado correctamente Reddition");
+						nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
+						if (nextPTitle.equals("Reddition")){
+							takeScreenShot("E:\\Selenium\\","RedditionCreated_"+timet+".jpg");
+							takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionCreated.jpg");
+							Thread.sleep(1000);
+							System.out.println("Se ha creado correctamente Reddition");
+							return;
+						}
+						if (nextPTitle.contains("Une erreur a été detectée")){
+							Thread.sleep(1500);
+							additionalTitle = "No se puede crear Reddition a causa de: ";
+							descriptionSubject ="No se ha podido crear una Reddition debido a un error en la creación, mirar el arhivo RedditionErr.jpg para mas detalles";
+							errorLev = driver.findElement(By.id("ctl00_ContentZone_lblMsg")).getText();
+							takeScreenShot("E:\\Selenium\\",fileError+"_"+timet+".jpg");
+							takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\",fileError+".jpg");
+							Thread.sleep(100);
+							System.out.println(errorLev);
+							Thread.sleep(1000);
+							driver.quit();
+							crearIncidenciaRedMine.createIncidence();
+							fail(errorLev);
+							return;
+							
+						}
 					}else{
-						String nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
 						Thread.sleep(500);
+						nextPTitle = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
 							if (nextPTitle.contains("Une erreur a été detectée")){
 								Thread.sleep(1500);
-								takeScreenShot("E:\\Selenium\\","RedditionErr_"+timet+".jpg");
-								takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\","RedditionErr.jpg");
-								Thread.sleep(1000);
-								String errorCreation = driver.findElement(By.id("ctl00_ContentZone_lblMsg")).getText();
+								additionalTitle = "No se puede crear Reddition a causa de: ";
+								descriptionSubject ="No se ha podido crear una Reddition debido a un error en la creación, mirar el arhivo RedditionErr.jpg para mas detalles";
+								errorLev = driver.findElement(By.id("ctl00_ContentZone_lblMsg")).getText();
+								takeScreenShot("E:\\Selenium\\",fileError+"_"+timet+".jpg");
+								takeScreenShot("E:\\workspace\\Mavi_Repository\\gestionFonds_Reddition\\attachments\\",fileError+".jpg");
 								Thread.sleep(100);
-								System.out.println("ERROR AL CREAR REDDITION :"+errorCreation);
-								fail(errorCreation);
+								System.out.println(errorLev);
+								Thread.sleep(1000);
+								crearIncidenciaRedMine.createIncidence();
+								fail(errorLev);
 								return;
 							}
 						
