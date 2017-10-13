@@ -30,8 +30,7 @@ import org.openqa.selenium.support.ui.Select;
 
 
 
-public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration{
-		private static String opzero=""; //numero de operador
+public class gestionCuentas_CrearCuentaStandard extends senacFieldsConfiguration{		
 		private static String infoCuenta0 = "ctl00_ContentZone_ctrlAccountData_radio_company_0";
 		private static String infoCuenta1 = "ctl00_ContentZone_ctrlAccountData_radio_company_1";
 		private static String titulofield = "ctl00_ContentZone_ctrlAccountData_cmb_title_cmb_dropdown";
