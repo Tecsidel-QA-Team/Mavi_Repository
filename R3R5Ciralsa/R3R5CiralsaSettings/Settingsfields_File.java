@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Settingsfields_File {
 	public static String dateverTransacciones;
 	public static int verTransDate;
+	public static String [] accountLink= new String[]{"Personal exenta", "Corporativa exenta"};
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostr3r5ciralsa/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazar3r5ciralsa/web/forms/core/login.aspx";
 	public static String MCSUrl = "http://virtualmcs-qa/MCS_ciralsa";
@@ -42,8 +43,8 @@ public class Settingsfields_File {
 	public static int carModelSel;
 	public static String mcsVersion = "lbl_version"; 
 	public static String confirmationMessage;
-	public static boolean errorTagAssignment = false;
-	public static String tagIdNmbr;
+	//public static boolean errorTagAssignment = false;
+	//public static String tagIdNmbr;
 	public static String [] colorS = new String[]{"Blanco", "Negro", "Azul", "Rojo", "Verde", "Amarillo"};
 	public static String matletT = "TRWAGMYFPDXBNJZSQVHLCKE";
 	public static String accountNumbr; 
@@ -54,9 +55,9 @@ public class Settingsfields_File {
 	public static String vehtypeKind;
 	public static String [][] cocheModels = {{"Seat","Volkswagen","Ford","Fiat"},{"Ibiza","Polo","Fiesta","Punto"},{"León","Passat","Focus","Stilo"}};
 	public static String [][] camionModels = {{"Mercedes-Benz","Scania"},{"Axor","R500"},{"Actros","P400"}};
-	public static String [][] furgonetaModels = {{"Mercedes-Benz","Fiat"},{"Vito","Scudo"},{"Citan","Ducato"}};
-	public static String [][] cicloModels = {{"Yamaha","Honda"},{"XT1200Z","Forza 300"},{"T-MAX SX","X-ADV"}};
-	public static String [][] autoBusModels = {{"DAIMLER-BENZ","VOLVO"},{"512-CDI","FM-12380"},{"DB 605","FM 300"}};	
+	//public static String [][] furgonetaModels = {{"Mercedes-Benz","Fiat"},{"Vito","Scudo"},{"Citan","Ducato"}};
+	//public static String [][] cicloModels = {{"Yamaha","Honda"},{"XT1200Z","Forza 300"},{"T-MAX SX","X-ADV"}};
+	//public static String [][] autoBusModels = {{"DAIMLER-BENZ","VOLVO"},{"512-CDI","FM-12380"},{"DB 605","FM 300"}};	
 	public static Calendar calF; 
 	public static Calendar calT;
 	public static SimpleDateFormat sft;
@@ -66,7 +67,6 @@ public class Settingsfields_File {
 	public static String acam;	
 	public static String fileDatafilled;
 	public static int ad;
-	public static int caMer;
 	public static String fileError;
 	public static String folderSel;
 	public static String projectSel;
@@ -95,16 +95,17 @@ public class Settingsfields_File {
 	public static String hourNumber = "ctl00_ContentZone_TxtNomHousr_box_data";
 	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";	
 	public static String MCSVersion;
+	public static String PAN;
 	public static String BOVersion;
-	public static String HMVersion;
 	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria"};
-	public static String [] genderS = new String[] {"Female", "Female", "Male", "Female", "Female", "Male", "Male", "Male", "Masculino", "Female"};
-	public static String [] sexSelc = new String[] {"Mrs", "Mrs", "Mr", "Mrs", "Mrs", "Mr", "Mr", "Mr", "Mr", "Mrs"};
+	public static String [] genderS = new String[] {"Femenino", "Femenino", "Masculino", "Femenino", "Femenino", "Masculino", "Masculino", "Masculino", "Masculino", "Femenino"};
+	public static String [] sexSelc = new String[] {"Sra", "Sra", "Sr", "Sra", "Sra", "Sr", "Sr", "Sr", "Sr", "Sra"};
 	public static String [] addressTec = new String[] {"CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Castanyer 29", "CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Catanyer 29","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo"};
 	public static String [] cpAdress = new String[]{"28041", "28041", "08022", "28041", "28041","08022","47151","47151","47151","47151"};
 	public static String [] townC = new String []{"Madrid", "Madrid", "Barcelona", "Madrid", "Madrid", "Barcelona", "Valladolid","Valladolid","Valladolid","Valladolid"};
 	public static String [] workPhone1 = new String []{"913530810","913530810","932922110","913530810","913530810","932922110","983546603","983546603","983546603","983546603"};
 	public static String [] lastNameOp = new String[] {"Bonilla", "Garrido", "Garcia", "Arjonilla", "Romano", "Navarro", "Sanchez", "Castro", "Bailon", "Blanco"};
+	public static String [] lastNameOp2 = new String[] {"Rol", "Sánchez", "Noyola", "Yague", "Cerro", "Ordoñez", "Grande", "Castaño", "Ascaray", "Ramos"};
 	  //Edit buttons icons configuration.	  	  
 	  public static Timestamp timest = new Timestamp (System.currentTimeMillis());
 	  public static String timet = timest.toString().replace("-", "").replace(" ", "").replace(":", "").substring(0,14);
@@ -135,6 +136,18 @@ public class Settingsfields_File {
       			driver.findElement(By.id(byID)).click();
       		}
       	
+     	public static void selectDropDownV(String by) {
+      		Select vDropdown = new Select (driver.findElement(By.id(by)));
+      			List<WebElement> dd = vDropdown.getOptions();		
+      			Random rand = new Random();
+      		int vdd = rand.nextInt(dd.size());
+      			if (vdd<=0){vdd = 1;}	
+      			if (vdd>=dd.size()){vdd=vdd-1;}
+      		new Select (driver.findElement(By.id(by))).selectByIndex(vdd);
+      		
+      		
+      	  }
+      	
       	public static void selectDropDown(String by) {
       		Select vDropdown = new Select (driver.findElement(By.id(by)));
       			List<WebElement> dd = vDropdown.getOptions();		
@@ -145,14 +158,25 @@ public class Settingsfields_File {
       		new Select (driver.findElement(By.id(by))).selectByIndex(vdd);
       		
       	  }
+      	public static void selectDropDownXPath(String xpath) {
+      		Select vDropdown = new Select (driver.findElement(By.xpath(xpath)));
+      			List<WebElement> dd = vDropdown.getOptions();		
+      			Random rand = new Random();
+      		int vdd = rand.nextInt(dd.size());
+      			if (vdd<0){vdd = 0;}	
+      			if (vdd>=dd.size()){vdd=vdd-1;}
+      		new Select (driver.findElement(By.xpath(xpath))).selectByIndex(vdd);
+      		
+      	  }
 
      	
-     	public static void dateSel() throws Exception{
+     	public static String dateSel(int date1,int date2 ) throws Exception{
 			calF = Calendar.getInstance();
 			calT = Calendar.getInstance();
 		 sft = new SimpleDateFormat("dd/MM/yyyy");
-		calF.set(ranNumbr(2017,2018), dateMFrom, ranNumbr(1,31));
-		calT.set(ranNumbr(1972,1979), ranNumbr(1,12), ranNumbr(1,31));
+		calF.set(ranNumbr(date1,date2), dateMFrom, ranNumbr(1,31));
+		calT.set(ranNumbr(date1,date2), ranNumbr(1,12), ranNumbr(1,31));
+		return sft.format(calT.getTime());
 
 	}
      	public static int ranNumbr(int min, int max) {
@@ -175,8 +199,32 @@ public class Settingsfields_File {
      			driver.findElement(By.id(loginButton)).click();
      			Thread.sleep(1000);
      	}
-     	/*public static String dniLetra (int dni){
-  		  return String.valueOf(dni)+(NIF_STRING_ASOCIATION.charAt(dni % 23));
-  	  }*/
+     	
+     	public static String dniLetra (String Dtype, int dni){
+     		if (Dtype == "DNI"){
+     			return String.valueOf(dni)+(matletT.charAt(dni % 23));
+     		}else{
+     			return String.valueOf(matletT.charAt(dni % 23))+(dni);
+     		}
+  	  }
+     	
+     	public static String hourFormat(int Hour1,int Hour2,int Min1, int Min2){
+			int Hour = ranNumbr(Hour1,Hour2);
+			int Min = ranNumbr(Min1,Min2);			
+			String MinS;
+			String HourS;
+					if (Hour < 10){
+						HourS="0".concat(String.valueOf(Hour));
+					}else{
+						HourS = String.valueOf(Hour);
+					}
+					if (Min < 10){
+						MinS="0".concat(String.valueOf(Min));
+					}else{
+						MinS = String.valueOf(Min);
+					}
+			return HourS+":"+MinS;
+
+		}
       	
 }

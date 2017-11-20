@@ -113,10 +113,9 @@ public void crearOperadores() throws Exception {
 		Thread.sleep(100);		
 		elementClick("ctl00_ContentZone_btnEditPanISO");
 		driver.findElement(By.id("ctl00_ContentZone_txt_paniso")).sendKeys(ranNumbr(100000000,999999999)+"");
-		Thread.sleep(100);
-		dateSel(1972,1979);
+		Thread.sleep(100);		
 		driver.findElement(By.id("ctl00_ContentZone_dt_birth_box_date")).clear();
-		driver.findElement(By.id("ctl00_ContentZone_dt_birth_box_date")).sendKeys(sft.format(calT.getTime()));
+		driver.findElement(By.id("ctl00_ContentZone_dt_birth_box_date")).sendKeys(dateSel(1972,1979));
 		Thread.sleep(1000);
 		WebElement operatorGroup = new Select (driver.findElement(By.id("ctl00_ContentZone_group_cmb_dropdown"))).getFirstSelectedOption();
 		String operatorG = operatorGroup.getText();				
