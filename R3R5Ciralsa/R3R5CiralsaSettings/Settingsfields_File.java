@@ -133,8 +133,15 @@ public class Settingsfields_File {
 	  
  
       	public static void elementClick(String byID) {
+      		if (byID.contains("//")){
+      			driver.findElement(By.xpath(byID)).click();
+      		}else{
       			driver.findElement(By.id(byID)).click();
       		}
+      		
+      	}
+      	
+      	
       	
      	public static void selectDropDownV(String by) {
       		Select vDropdown = new Select (driver.findElement(By.id(by)));
@@ -208,6 +215,16 @@ public class Settingsfields_File {
      		}
   	  }
      	
+     	public static void SendKeys (String path, String toSend){
+     		if (path.contains("//")){
+     			driver.findElement(By.xpath(path)).clear();
+     			driver.findElement(By.xpath(path)).sendKeys(toSend);
+     		}else{
+     			driver.findElement(By.id(path)).clear();
+     			driver.findElement(By.id(path)).sendKeys(toSend);
+     		}
+     	}
+     	
      	public static String hourFormat(int Hour1,int Hour2,int Min1, int Min2){
 			int Hour = ranNumbr(Hour1,Hour2);
 			int Min = ranNumbr(Min1,Min2);			
@@ -224,6 +241,15 @@ public class Settingsfields_File {
 						MinS = String.valueOf(Min);
 					}
 			return HourS+":"+MinS;
+
+		}
+		public static boolean isAlertPresent() throws Exception{
+			try{
+				driver.switchTo().alert();
+				return true;
+			}catch (Exception e){
+				return false;
+			}
 
 		}
       	
