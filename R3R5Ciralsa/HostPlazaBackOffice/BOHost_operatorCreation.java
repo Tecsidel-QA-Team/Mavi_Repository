@@ -53,7 +53,7 @@ public class BOHost_operatorCreation extends Settingsfields_File {
 				    if (!"".equals(verificationErrorString)) {
 				      fail(verificationErrorString);
 				    }
-}
+			}
 
 @Test
 public void crearOperadores() throws Exception {
