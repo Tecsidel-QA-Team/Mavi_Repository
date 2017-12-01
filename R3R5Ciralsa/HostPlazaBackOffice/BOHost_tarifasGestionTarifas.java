@@ -20,7 +20,6 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 		private static String [] tarifasOption = {"Crear Copia", "Editar Tarifas","Editar Agrupación tarifas","Eliminar Tarifas"};
 		private static String [] tarifasOptionOperation = {"Crear", "Modificar", "Eliminar", "Edición Múltiple"};
 		private static int opSel;
-		private static String OptionSel;
 		private static String optionSelected;
 		public static String fechaAct;
 		
@@ -41,8 +40,6 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 		@Test
 		public void gestionTarifas() throws Exception {			
 			Actions action = new Actions(driver);		
-			
-			
 			borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\BOHost_tarifasgestionTarifas\\attachments\\");
 			try{
 				driver.get(BoHostUrl);
@@ -69,7 +66,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 					HMver = "<HM is not running>";
 					BOVersion = BOVersion.substring(0,16);
 				}			
-				opSel = 3;//ranNumbr(0,3);
+				opSel = ranNumbr(0,3);
 				switch (tarifasOption[opSel]){				
 					case "Crear Copia" :				SendKeys("ctl00_ContentZone_dt_newTime_box_date", dateSel(2017,2018));
 														Thread.sleep(100);
@@ -397,7 +394,14 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 			try{
 				takeScreenShot("E:\\Selenium\\","editar_AgrupacionTarifas"+timet+".jpeg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_tarifasgestionTarifas\\attachments\\","editar_AgrupacionTarifas.jpeg");
-				opSel = 0;ranNumbr(0,2);
+				String recordsList = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
+				if (recordsList.length()>25){
+					recordsList = recordsList.substring(25);
+				}else{
+					recordsList = recordsList.substring(24);
+				}
+				int firstRecordList = Integer.parseInt(recordsList);
+				opSel = ranNumbr(0,2);
 				optionSelected = tarifasOptionOperation[opSel];
 				WebElement tableRes = driver.findElement(By.id("ctl00_ContentZone_TblResults"));					
 				List <WebElement> tableResult = tableRes.findElements(By.tagName("tr"));								
@@ -561,11 +565,25 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 				}
 				Thread.sleep(100);
 				selectDropDown("ctl00_ContentZone_CmbFareAggrupation");
-				Thread.sleep(2000);
+				Thread.sleep(2000);				
 				takeScreenShot("E:\\Selenium\\","ediciónAgrupaTarifasFilledPage"+timet+".jpeg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_tarifasgestionTarifas\\attachments\\","ediciónAgrupaTarifasFilledPage.jpeg");
-				elementClick("ctl00_ButtonsZone_BtnSubmit_IB_Label");
-				Thread.sleep(3000);			
+				elementClick("ctl00_ButtonsZone_BtnSubmit_IB_Label");				
+				Thread.sleep(2000);
+				if (optionSelected.equals("Crear")){
+					recordsList = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();
+					if (recordsList.length()>25){
+						recordsList = recordsList.substring(25);
+					}else{
+						recordsList = recordsList.substring(24);
+					}
+					int secondRecordList = Integer.parseInt(recordsList);
+					if (secondRecordList == firstRecordList){
+						System.out.println("No se ha podido crear una tarifa en Agrupación de Tarifa, favor hacerlo manualmente y averiguar el error");
+						fail("No se ha podido crear una tarifa en Agrupación de Tarifa, favor hacerlo manualmente y averiguar el error");
+					}
+				}
+				Thread.sleep(2000);
 				
 			}catch (Exception e){
 				e.printStackTrace();
