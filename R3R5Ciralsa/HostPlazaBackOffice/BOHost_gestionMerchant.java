@@ -18,6 +18,7 @@ import R3R5CiralsaSettings.Settingsfields_File;
 public class BOHost_gestionMerchant extends Settingsfields_File {		
 		private static String merchantName;
 		private static int merchantCode;
+		private static String clickItem;
 		
 		@Before
 		public void setUp() throws Exception{
@@ -108,13 +109,12 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 			Thread.sleep(100);
 			elementClick("ctl00_ButtonsZone_BtnSearch");
 			Thread.sleep(1000);
-			//*[@id="merchantTable_radio_0"]
 			elementClick("merchantTable_radio_0");			
 			Thread.sleep(100);
 			elementClick("ctl00_ContentZone_BtnModify");
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			takeScreenShot("E:\\Selenium\\","modifymerchantPage"+timet+".jpeg");
-			takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_gestionMarchant\\attachments\\","modifymerchantPage.jpeg");
+			takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_gestionMarchant\\attachments\\","modifymerchantPage.jpeg");			
 			driver.findElement(By.xpath("//*[@class='ng-binding ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons']")).click();
 			Thread.sleep(500);
 			driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_td1']/div/input[1]")).click();
@@ -128,7 +128,7 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 			if (ranNumbr(0,2)>1){
 				elementClick("chkRangeActive");
 			}
-			Thread.sleep(100);
+			Thread.sleep(1000);
 			if (ranNumbr(0,2)>1){
 				elementClick("chkRangeOnline");
 			}
@@ -162,7 +162,10 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 			Thread.sleep(3000);
 			takeScreenShot("E:\\Selenium\\","modifymerchantRangefilled"+timet+".jpeg");
 			takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_gestionMarchant\\attachments\\","modifymerchantRangeFilled.jpeg");
-			listaNegraConfiguration();
+			if (driver.findElement(By.xpath("//*[@id='merchantDialog']/table/tbody/tr[3]/td/div/h3[2]")).isDisplayed()){
+				listaNegraConfiguration();
+			}
+			
 		}catch (Exception e){
 			fail(e.getMessage());
 		}
@@ -177,6 +180,7 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 			if (ranNumbr(0,2)>1){
 				elementClick("chkBLSharedBlacklist");
 				selectDropDownV("cmbSBLSharedBlacklist");
+				Thread.sleep(1000);
 			}else{				
 				selectDropDown("cmbBLformatType");
 				Thread.sleep(100);
@@ -250,7 +254,7 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 			takeScreenShot("E:\\Selenium\\","blackListsectionfilled"+timet+".jpeg");
 			takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_gestionMarchant\\attachments\\","blackListsectionfilled.jpeg");
 				Thread.sleep(5000);
-				if (driver.getPageSource().contains("Configuración de fichero por lotes")){
+				if (driver.findElement(By.xpath("//*[@id='merchantDialog']/table/tbody/tr[3]/td/div/h3[3]")).isDisplayed()){
 					configuracionFicheroLotes();
 				}
 		}catch (Exception e){
@@ -322,9 +326,9 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 				}else{
 					List <WebElement> alertNo = new Select(driver.findElement(By.cssSelector("#divAlertNotificationInBatchFiles_component > div.ng-scope > div > table > tbody > tr > td > div.formRow > #cmbAlertNotifOperators"))).getOptions();
 					new Select(driver.findElement(By.cssSelector("#divAlertNotificationInBatchFiles_component > div.ng-scope > div > table > tbody > tr > td > div.formRow > #cmbAlertNotifOperators"))).selectByIndex(ranNumbr(1,alertNo.size()-1));
-					Thread.sleep(100);
+					Thread.sleep(1000);
 					elementClick("btnAlertNotifAdd");
-					Thread.sleep(100);					
+					Thread.sleep(1000);					
 					elementClick("btnAlertNotifCreateExt");
 					Thread.sleep(1000);					
 					int selOp = ranNumbr(0,nameOp.length-1);
