@@ -25,14 +25,14 @@ public class BOHost_gestionDescuento extends Settingsfields_File {
 		
 		@Before
 		public void setUp() throws Exception{
-    		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "E:\\workspace\\Mavi_Repository\\lib\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
     			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true
     			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);*/
     				//ChromeOptions opts =  new ChromeOptions(); poner esta opción cuando se vaya a subir a Git
     				//opts.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"); poner esta opción cuando se vaya a subir a Git
     				driver = new ChromeDriver();//opts); poner esta opción cuando se vaya a subir al Git
-    				//driver.manage().window().maximize();	
+    				driver.manage().window().maximize();	
     				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		}
 
@@ -148,7 +148,7 @@ public class BOHost_gestionDescuento extends Settingsfields_File {
 					Thread.sleep(100);
 					if (ranNumbr(0,1)>0){
 						driver.findElement(By.cssSelector("#discountDialog > table > tbody > tr:nth-child(1) > td:nth-child(3) > div:nth-child(2) > div:nth-child(3) > input")).click();
-						//elementClick("//*[@id='discountDialog']/table/tbody/tr[1]/td[3]/div[2]/div[3]/input");
+
 					}
 					Thread.sleep(100);
 					selectDropDownXPath("//*[@id='discountDialog']/table/tbody/tr[1]/td[3]/div[2]/div[4]/select");				
