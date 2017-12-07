@@ -4,17 +4,14 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import R3R5CiralsaSettings.Settingsfields_File;
-import javafx.scene.chart.Chart;
+
 
 public class BOHost_gestionDescuento extends Settingsfields_File {		
 		private static String [] gestionDescOption = {"Crear", "Modificar", "Eliminar"};

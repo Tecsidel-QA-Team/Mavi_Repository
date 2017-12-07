@@ -3,8 +3,6 @@ package HostPlazaBackOffice;
 import static org.junit.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
@@ -12,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import R3R5CiralsaSettings.Settingsfields_File;
 
 public class BOHost_assignVehicleandPANToExistingAccount extends Settingsfields_File {		
@@ -67,12 +64,14 @@ public class BOHost_assignVehicleandPANToExistingAccount extends Settingsfields_
 				BOHost_accountCreationWithVehicleandPAN.vehicleCreation();
 				Thread.sleep(1000);
 				System.out.println("Se ha asignado un vehículo a la cuenta: "+accountNumbr.substring(7,16)+" correctamente con el vehículo creado con la matricula: "+matriNu+ " y el PAN: "+PAN);
-				String HMver = BOVersion.substring(1);
+				String HMver = BOVersion.substring(1);				
 				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);			
+					HMver = BOVersion.substring(17);
+					BOVersion=BOVersion.substring(1,16);
 				}else{
 					HMver = "<HM is not running>";
-				}				
+					BOVersion=BOVersion.substring(1,7);
+				}			
 				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
 			}catch (Exception e){
 				fail (e.getMessage());
