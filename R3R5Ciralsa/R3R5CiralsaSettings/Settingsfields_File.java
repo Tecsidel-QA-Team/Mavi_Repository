@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -114,6 +115,7 @@ public class Settingsfields_File {
 		    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		    FileUtils.copyFile(scrFile, new File(pathS, fname));
 	  }
+	  
 	  public static void borrarArchivosTemp(String tempPath) throws Exception{
 			File imagTmp = new File (tempPath);
 			if (imagTmp.exists()){
@@ -143,13 +145,13 @@ public class Settingsfields_File {
       	
       	
       	
-     	public static void selectDropDownV(String by) {
+     	public static void selectDropDownV(String by) {     		
       		Select vDropdown = new Select (driver.findElement(By.id(by)));
       			List<WebElement> dd = vDropdown.getOptions();		
       			Random rand = new Random();
       		int vdd = rand.nextInt(dd.size());
       			if (vdd<=0){vdd = 1;}	
-      			if (vdd>=dd.size()){vdd=vdd-1;}
+      			if (vdd>=dd.size()){vdd=vdd-1;}      			      			
       		new Select (driver.findElement(By.id(by))).selectByIndex(vdd);
       		
       		
@@ -216,32 +218,20 @@ public class Settingsfields_File {
   	  }
      	
      	public static void SendKeys (String path, String toSend){
+     		
      		if (path.contains("//")){
      			driver.findElement(By.xpath(path)).clear();
      			driver.findElement(By.xpath(path)).sendKeys(toSend);
      		}else{
      			driver.findElement(By.id(path)).clear();
-     			driver.findElement(By.id(path)).sendKeys(toSend);
+     			driver.findElement(By.id(path)).sendKeys(toSend);    			
      		}
      	}
      	
      	public static String hourFormat(int Hour1,int Hour2,int Min1, int Min2){
 			int Hour = ranNumbr(Hour1,Hour2);
 			int Min = ranNumbr(Min1,Min2);			
-			String MinS;
-			String HourS;
-					if (Hour < 10){
-						HourS="0".concat(String.valueOf(Hour));
-					}else{
-						HourS = String.valueOf(Hour);
-					}
-					if (Min < 10){
-						MinS="0".concat(String.valueOf(Min));
-					}else{
-						MinS = String.valueOf(Min);
-					}
-			return HourS+":"+MinS;
-
+			return String.format("%1$02d",Hour)+":"+String.format("%1$02d",Min);					
 		}
 		public static boolean isAlertPresent() throws Exception{
 			try{
