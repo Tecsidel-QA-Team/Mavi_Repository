@@ -65,7 +65,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 					HMver = "<HM is not running>";
 					BOVersion = BOVersion.substring(0,16);
 				}			
-				opSel = ranNumbr(0,3);
+				opSel = 0; ranNumbr(0,3);
 				switch (tarifasOption[opSel]){				
 					case "Crear Copia" :				SendKeys("ctl00_ContentZone_dt_newTime_box_date", dateSel(2017,2018));
 														Thread.sleep(100);

@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
@@ -50,6 +51,7 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 		@Test
 		public void calendarioInit() throws Exception {
 			Actions action = new Actions(driver);
+			
 			borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\BOHost_tarifasCalendario\\attachments\\");
 			try{
 				driver.get(BoHostUrl);
@@ -226,13 +228,13 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 						}						
 					}
 				
-					SendKeys("ctl00_ContentZone_dt_from_box_date", dateSel(2017,2018));
+					SendKeys("ctl00_ContentZone_dt_from_box_date", dateSel(2017,2020));
 					Thread.sleep(500);
 					dateDesde = driver.findElement(By.id("ctl00_ContentZone_dt_from_box_date")).getAttribute("value"); 				
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ChkTo");
 						Thread.sleep(500);
-						SendKeys("ctl00_ContentZone_dt_to_box_date", dateSel(2018,2019));
+						SendKeys("ctl00_ContentZone_dt_to_box_date", dateSel(2018,2025));
 						Thread.sleep(500);
 						dateHasta = driver.findElement(By.id("ctl00_ContentZone_dt_to_box_date")).getAttribute("value");
 					}
