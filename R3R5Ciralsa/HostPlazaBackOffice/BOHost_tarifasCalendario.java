@@ -64,10 +64,10 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 				String HMver = BOVersion.substring(1);				
 				if (HMver.length()>18){
 					HMver = BOVersion.substring(17);
-					BOVersion=BOVersion.substring(1,16);
+					BOVersion=BOVersion.substring(0,16);
 				}else{
 					HMver = "<HM is not running>";
-					BOVersion=BOVersion.substring(1,7);
+					BOVersion=BOVersion.substring(0,16);
 				}	
 				Thread.sleep(2000);					
 				action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
@@ -111,7 +111,7 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 													System.out.println("No se ha podido copiar el Calendario del año anterior: "+(yearSel-1) +" a este año "+yearSel+" debido a: "+errorText.substring(2));
 													fail("No se ha podido copiar el Calendario del año anterior: "+(yearSel-1) +" a este año "+yearSel+" debido a: "+errorText.substring(2));													
 												}
-												System.out.println("Se ha copiado las fechas del Calendario anterior: "+(yearSel-1)+" a este año: "+yearSel+" correctamente");
+												System.out.println("Se han copiado las fechas del Calendario anterior: "+(yearSel-1)+" a este año: "+yearSel+" correctamente");
 												break;
 				}
 				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion +" y Host Manager: "+HMver);
@@ -145,28 +145,20 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 					String calenSelected = calendarRecords.get(selcRan);
 					int calSelN = Integer.parseInt(calenSelected.substring(0,4));
 					calReSelected = calenSelected.substring(6,8).concat("/").concat(calenSelected.substring(4,6)).concat("/").concat(calenSelected.substring(0,4));					
-					String currentCalWindow = driver.findElement(By.id("ctl00_ContentZone_LblYear")).getText();			    
-					boolean GoForward=false;
+					String currentCalWindow = driver.findElement(By.id("ctl00_ContentZone_LblYear")).getText();			    					
 					do {
 						currentCalWindow = driver.findElement(By.id("ctl00_ContentZone_LblYear")).getText();
 						if (calSelN<Integer.parseInt(currentCalWindow)){
-							GoForward = false;
+							elementClick("ctl00_ContentZone_BtnPrev");					
 						}
 						if (calSelN>Integer.parseInt(currentCalWindow)){
-							GoForward = true;
+							elementClick("ctl00_ContentZone_BtnNext");						
 						}
 						if (Integer.parseInt(currentCalWindow)==calSelN){
 							Thread.sleep(200);						
 							elementClick("ctl00_ContentZone_radio"+calenSelected);												
 							Thread.sleep(1000);			    		
 							break;			    		
-						}else{
-							if (!GoForward){
-			    			elementClick("ctl00_ContentZone_BtnPrev");
-							}
-							if (GoForward){
-								elementClick("ctl00_ContentZone_BtnNext");
-							}
 						}
 						Thread.sleep(300);
 					} while (Integer.parseInt(currentCalWindow)!=calSelN);
@@ -221,7 +213,7 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 					if (calenSel[opSel].equals("Modificar")){
 						elementClick("ctl00_ContentZone_BtnModify");
 						Thread.sleep(1000);
-						if (driver.getPageSource().contains("Solo se pueden modificar días futuros")){
+						if (driver.getPageSource().contains("Solo se pueden modificar días futuros") || driver.getPageSource().contains("El rango de fechas introducido se solapa con")){
 							errorText = driver.findElement(By.id("toast-message")).getText();
 							notAction = true;
 							return;
@@ -243,7 +235,7 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 					Thread.sleep(500);
 					elementClick("ctl00_ContentZone_BtnSubmit");
 					Thread.sleep(1000);				
-					if (driver.getPageSource().contains("Por favor, introduzca una fecha futura") || driver.getPageSource().contains("Fecha 'hasta' no puede ser anterior a 'desde'") || driver.getPageSource().contains("El rango de fecha introducido se solapa")){
+					if (driver.getPageSource().contains("Por favor, introduzca una fecha futura") || driver.getPageSource().contains("Fecha 'hasta' no puede ser anterior a 'desde'") || driver.getPageSource().contains("El rango de fecha introducido se solapa") || driver.getPageSource().contains("El rango de fechas introducido se solapa con")){
 						notAction = true;
 						errorText = driver.findElement(By.xpath("//*[@id='toast-container']/div/div")).getText();
 						return;

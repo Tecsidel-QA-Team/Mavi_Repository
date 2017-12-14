@@ -46,10 +46,12 @@ public class BOHost_gestionDescuento extends Settingsfields_File {
 			Thread.sleep(2000);
 			String HMver = BOVersion.substring(1);
 			if (HMver.length()>18){
-				HMver = BOVersion.substring(18);			
+				HMver = BOVersion.substring(17);
+				BOVersion=BOVersion.substring(0,16);
 			}else{
 				HMver = "<HM is not running>";
-			}			
+				BOVersion=BOVersion.substring(0,16);
+			}		
 			opSel = ranNumbr(0,2);
 			switch (gestionDescOption[opSel]){
 				case "Crear":		OptionSel = "ctl00_ContentZone_BtnCreate";
@@ -67,7 +69,7 @@ public class BOHost_gestionDescuento extends Settingsfields_File {
 									break;								
 			}
 			
-			System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
+			System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);
 			
 		}
 		

@@ -58,10 +58,10 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 				String HMver = BOVersion.substring(1);
 				if (HMver.length()>18){
 					HMver = BOVersion.substring(17);
-					BOVersion=BOVersion.substring(1,16);
+					BOVersion=BOVersion.substring(0,16);
 				}else{
 					HMver = "<HM is not running>";
-					BOVersion=BOVersion.substring(1,7);
+					BOVersion=BOVersion.substring(0,16);
 				}
 				action.clickAndHold(driver.findElement(By.linkText("Gestión de pagos"))).build().perform();
 				Thread.sleep(1000);

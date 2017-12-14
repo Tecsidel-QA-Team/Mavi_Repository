@@ -46,9 +46,11 @@ public class BOHost_gestion_MapeoDAC_CAT extends Settingsfields_File {
 			Thread.sleep(2000);
 			String HMver = BOVersion.substring(1);
 			if (HMver.length()>18){
-				HMver = BOVersion.substring(18);			
+				HMver = BOVersion.substring(17);		
+				BOVersion = BOVersion.substring(1,16);
 			}else{
 				HMver = "<HM is not running>";
+				BOVersion = BOVersion.substring(1);
 			}			
 			opSel = ranNumbr(0,2);
 			switch (gestionDACOption [opSel]){
@@ -67,7 +69,7 @@ public class BOHost_gestion_MapeoDAC_CAT extends Settingsfields_File {
 									break;								
 			}
 			
-			System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
+			System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);
 			
 		}
 		
@@ -140,11 +142,7 @@ public class BOHost_gestion_MapeoDAC_CAT extends Settingsfields_File {
 				selectDropDown("ctl00_ContentZone_CmbCompany_cmb_dropdown");
 				if (gestionDACOption[opSel]=="Crear"){
 					int indic = ranNumbr(1,99);					
-					if (indic < 10){
-						DACIndice = "0".concat(String.valueOf(indic));
-					}else{
-						DACIndice = String.valueOf(indic);
-					}
+					DACIndice = String.format("%1$02d", indic);					
 					SendKeys("ctl00_ContentZone_BoxMapIndex_box_data",DACIndice);
 					WebElement Concesionaria = new Select(driver.findElement(By.id("ctl00_ContentZone_CmbCompany_cmb_dropdown"))).getFirstSelectedOption();
 					DACNumber = Concesionaria.getText();

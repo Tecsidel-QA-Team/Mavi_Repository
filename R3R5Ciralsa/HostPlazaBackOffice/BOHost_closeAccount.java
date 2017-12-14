@@ -32,7 +32,7 @@ public class BOHost_closeAccount extends Settingsfields_File {
 		}
 
 		@Test
-		public void assignVehicleandPANToExistingAccount() throws Exception {
+		public void closeAccount() throws Exception {
 			Actions action = new Actions(driver);
 			borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\BOHost_closeAccount\\attachments\\");
 			try{

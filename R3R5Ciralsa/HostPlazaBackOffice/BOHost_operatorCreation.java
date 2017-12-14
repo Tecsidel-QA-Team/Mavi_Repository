@@ -22,7 +22,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class BOHost_operatorCreation extends Settingsfields_File {
 			 private static String lastcreated ;
-			// private static String [] operzero = {"0","0","0","0","0"};
 			 private static WebElement tableResult;
 			 private static List<WebElement> userResults;
 			 private static String enviarViaVer;
@@ -69,8 +68,7 @@ public void crearOperadores() throws Exception {
 		BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();		
 		Thread.sleep(2000);					
 		action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
-		Thread.sleep(1000);
-		//action.moveToElement(driver.findElement(By.linkText("Operadores")));
+		Thread.sleep(1000);		
 		action.clickAndHold(driver.findElement(By.linkText("Operadores"))).build().perform();
 		Thread.sleep(500);
 		driver.findElement(By.linkText("Gestión de operadores")).click();								
@@ -171,12 +169,14 @@ public void crearOperadores() throws Exception {
 		loginPage(lastcreated,"00001");		
 		String HMver = BOVersion.substring(1);
 		if (HMver.length()>18){
-			HMver = BOVersion.substring(17);			
+			HMver = BOVersion.substring(17);
+			BOVersion=BOVersion.substring(0,16);
 		}else{
 			HMver = "<HM is not running>";
-		}
+			BOVersion=BOVersion.substring(0,16);
+		}	
 		System.out.println("Se ha Creado el operador "+lastcreated+" con la contraseaña: 00001 en el grupo de "+operatorG.substring(04));
-		System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
+		System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);
 		takeScreenShot("E:\\Selenium\\","userCreatedscreenHome"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_crearOperadores\\attachments\\","userCreatedscreenHome.jpg");
 		Thread.sleep(10000);
