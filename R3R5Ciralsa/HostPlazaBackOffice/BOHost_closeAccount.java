@@ -83,9 +83,11 @@ public class BOHost_closeAccount extends Settingsfields_File {
 				System.out.println("Se cerrado la cuenta: "+accountNumbr.substring(7,16)+" correctamente ");
 				String HMver = BOVersion.substring(1);
 				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);			
+					HMver = BOVersion.substring(18);
+					BOVersion = BOVersion.substring(0,16);
 				}else{
 					HMver = "<HM is not running>";
+					BOVersion = BOVersion.substring(0);
 				}				
 				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
 			}catch (Exception e){
