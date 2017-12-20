@@ -35,11 +35,14 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
 				String HMver = BOVersion.substring(1);
 				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);			
+					HMver = BOVersion.substring(17);
+					BOVersion=BOVersion.substring(0,16);
 				}else{
 					HMver = "<HM is not running>";
+					BOVersion=BOVersion.substring(0);
+					
 				}				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);				
+				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);				
 			}
 
 		public static void accountCreation() throws Exception {
@@ -60,9 +63,9 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				Thread.sleep(500);
 				int accountCreatelink = 1; //ranNumbr(0,1);
 				if (accountCreatelink==0){
-					driver.findElement(By.linkText(accountLink[0])).click();;
+					driver.findElement(By.partialLinkText(accountLink[0])).click();;
 				}else{
-					driver.findElement(By.linkText(accountLink[1])).click();
+					driver.findElement(By.partialLinkText(accountLink[1])).click();
 				}
 				accountNumbr = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();				
 				int selOp = ranNumbr(0,8);
