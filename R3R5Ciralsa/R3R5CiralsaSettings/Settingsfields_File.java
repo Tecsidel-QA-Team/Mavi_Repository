@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Settingsfields_File {
 	public static String dateverTransacciones;
 	public static int verTransDate;
-	public static String [] accountLink= new String[]{"Personal exenta", "Corporativa exenta"};
+	public static String [] accountLink= new String[]{"Cliente", "Exenta"};
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostr3r5ciralsa/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazar3r5ciralsa/web/forms/core/login.aspx";
 	public static String MCSUrl = "http://virtualmcs-qa/MCS_ciralsa";
