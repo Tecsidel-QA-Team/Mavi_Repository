@@ -25,7 +25,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
     				//opts.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"); poner esta opción cuando se vaya a subir a Git
     				driver = new ChromeDriver();//opts); poner esta opción cuando se vaya a subir al Git
     				driver.manage().window().maximize();	
-    				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+    				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			}
 
 			@Test
@@ -35,8 +35,8 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
 				String HMver = BOVersion.substring(1);
 				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);
-					BOVersion=BOVersion.substring(0,16);
+					HMver = BOVersion.substring(19);
+					BOVersion=BOVersion.substring(0,17);
 				}else{
 					HMver = "<HM is not running>";
 					BOVersion=BOVersion.substring(0);
@@ -61,54 +61,68 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				Thread.sleep(1000);
 				action.clickAndHold(driver.findElement(By.linkText("Crear cuenta"))).build().perform();
 				Thread.sleep(500);
-				int accountCreatelink = 1; //ranNumbr(0,1);
+				int accountCreatelink = ranNumbr(0,1);
 				if (accountCreatelink==0){
 					driver.findElement(By.partialLinkText(accountLink[0])).click();;
 				}else{
 					driver.findElement(By.partialLinkText(accountLink[1])).click();
 				}
 				accountNumbr = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();				
+				switch (accountCreatelink){
+				case 0:						postPagoAccount();
+											break;
+				case 1:						excentaAccount();
+											break;
+				}
+				
+			}catch (Exception e){
+				e.printStackTrace();
+				fail(e.getMessage());
+			}
+		}
+		
+		public static void excentaAccount() throws Exception{
+			try{
 				int selOp = ranNumbr(0,8);
 				int selOp2 = ranNumbr(0,8);
-				if (accountCreatelink == 0){
-					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data")).sendKeys(dniLetra("DNI",ranNumbr(10000000,50000000)));
+				int accountSel = ranNumbr(0,1);				
+				if (accountSel == 0){
+					SendKeys("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data",dniLetra("DNI",ranNumbr(10000000,50000000)));
 					Thread.sleep(100);
 					new Select (driver.findElement(By.id(titulofield))).selectByVisibleText(sexSelc[selOp]);
 					Thread.sleep(100);
-					driver.findElement(By.id(namef)).sendKeys(nameOp[selOp]);
+					SendKeys(namef,nameOp[selOp]);
 					Thread.sleep(100);
-					driver.findElement(By.id(surnamef)).sendKeys(lastNameOp[selOp]);
+					SendKeys(surnamef,lastNameOp[selOp]);
 					Thread.sleep(100);
-					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_surname2_box_data")).sendKeys(lastNameOp2[selOp]);
+					SendKeys("ctl00_ContentZone_ctrlAccountData_txt_surname2_box_data",lastNameOp2[selOp]);
 					Thread.sleep(100);
-					driver.findElement(By.id(addressf)).sendKeys(addressTec[selOp]);
+					SendKeys(addressf,addressTec[selOp]);
 					Thread.sleep(100);										
-					driver.findElement(By.id(emailf)).sendKeys(nameOp[selOp].toLowerCase()+"."+lastNameOp[selOp].toLowerCase()+"@tecsidel.es");
+					SendKeys(emailf,nameOp[selOp].toLowerCase()+"."+lastNameOp[selOp].toLowerCase()+"@tecsidel.es");
 					Thread.sleep(100);
-					driver.findElement(By.id(phoneCel)).sendKeys(ranNumbr(600000000,699999999)+"");
+					SendKeys(phoneCel,ranNumbr(600000000,699999999)+"");
 					Thread.sleep(100);
-					driver.findElement(By.id(workPhone)).sendKeys(workPhone1[selOp]);
+					SendKeys(workPhone,workPhone1[selOp]);
 					Thread.sleep(100);
-					driver.findElement(By.id(perPhone)).sendKeys(ranNumbr(900000000,999999999)+"");
+					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
 					Thread.sleep(100);
-					driver.findElement(By.id(faxPhone)).sendKeys(workPhone1[selOp]);		
+					SendKeys(faxPhone,workPhone1[selOp]);	
 					Thread.sleep(100);
 					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
 					Thread.sleep(100);
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountExempt_radio_expiry_1");						
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_cal_date_expiry_box_date")).sendKeys(dateSel(2018,2019));
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_cal_date_expiry_box_date",dateSel(2018,2019));
 						Thread.sleep(100);
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning")).clear();
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning")).sendKeys(ranNumbr(10,15)+"");
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning", ranNumbr(10,15)+"");
 						Thread.sleep(100);
 					}
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountExempt_radio_trips_1");
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_max_trips")).sendKeys(ranNumbr(1,10)+"");
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_txt_max_trips",ranNumbr(1,10)+"");
 						Thread.sleep(100);
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning")).clear();
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning")).sendKeys(ranNumbr(1,6)+"");
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning",ranNumbr(1,6)+"");
 						Thread.sleep(100);
 					}
 					
@@ -117,38 +131,36 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data")).sendKeys(dniLetra("CIF",ranNumbr(10000000,19999999)));
 					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_companyType_cmb_dropdown");
 					Thread.sleep(100);
-					driver.findElement(By.id(companyf)).sendKeys("Tecsidel, S.A");
+					SendKeys(companyf,"Tecsidel, S.A");
 					Thread.sleep(100);
-					driver.findElement(By.id(contactf)).sendKeys(nameOp[selOp]+" "+lastNameOp[selOp]+", "+nameOp[selOp2]+" "+lastNameOp[selOp2]);
+					SendKeys(contactf,nameOp[selOp]+" "+lastNameOp[selOp]+", "+nameOp[selOp2]+" "+lastNameOp[selOp2]);
 					Thread.sleep(100);
-					driver.findElement(By.id(addressf)).sendKeys(addressTec[2]);
+					SendKeys(addressf,addressTec[2]);
 					Thread.sleep(100);						
-					driver.findElement(By.id(emailf)).sendKeys("info@tecsidel.es");
+					SendKeys(emailf,"info@tecsidel.es");
 					Thread.sleep(100);
-					driver.findElement(By.id(phoneCel)).sendKeys(ranNumbr(600000000,699999999)+"");
+					SendKeys(phoneCel,ranNumbr(600000000,699999999)+"");
 					Thread.sleep(100);
-					driver.findElement(By.id(workPhone)).sendKeys(workPhone1[2]);
+					SendKeys(workPhone,workPhone1[2]);
 					Thread.sleep(100);
-					driver.findElement(By.id(perPhone)).sendKeys(ranNumbr(900000000,999999999)+"");
+					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
 					Thread.sleep(100);
-					driver.findElement(By.id(faxPhone)).sendKeys(workPhone1[selOp]);					
+					SendKeys(faxPhone,workPhone1[selOp]);					
 					Thread.sleep(100);
 					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
 					Thread.sleep(100);
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountExempt_radio_expiry_1");						
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_cal_date_expiry_box_date")).sendKeys(dateSel(2018,2019));
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_cal_date_expiry_box_date",dateSel(2018,2019));
 						Thread.sleep(100);
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning")).clear();
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning")).sendKeys(ranNumbr(10,15)+"");
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_txt_days_warning",ranNumbr(10,15)+"");
 						Thread.sleep(100);
 					}
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountExempt_radio_trips_1");
 						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_max_trips")).sendKeys(ranNumbr(1,10)+"");
 						Thread.sleep(100);
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning")).clear();
-						driver.findElement(By.id("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning")).sendKeys(ranNumbr(1,6)+"");
+						SendKeys("ctl00_ContentZone_ctrlAccountExempt_txt_trips_warning",ranNumbr(1,6)+"");
 						Thread.sleep(100);
 					}
 					
@@ -163,6 +175,87 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 			}
 		}
 
+		public static void postPagoAccount() throws Exception{
+			try{
+				int selOp = ranNumbr(0,8);
+				int selOp2 = ranNumbr(0,8);
+				int accountSel = ranNumbr(0,1);					
+				if (accountSel == 0){
+					SendKeys("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data",dniLetra("DNI",ranNumbr(10000000,50000000)));
+					Thread.sleep(100);
+					new Select (driver.findElement(By.id(titulofield))).selectByVisibleText(sexSelc[selOp]);
+					Thread.sleep(100);
+					SendKeys(namef,nameOp[selOp]);
+					Thread.sleep(100);
+					SendKeys(surnamef,lastNameOp[selOp]);
+					Thread.sleep(100);
+					SendKeys("ctl00_ContentZone_ctrlAccountData_txt_surname2_box_data",lastNameOp2[selOp]);
+					Thread.sleep(100);
+					SendKeys(addressf,addressTec[selOp]);
+					Thread.sleep(100);										
+					SendKeys(emailf,nameOp[selOp].toLowerCase()+"."+lastNameOp[selOp].toLowerCase()+"@tecsidel.es");
+					Thread.sleep(100);
+					SendKeys(phoneCel,ranNumbr(600000000,699999999)+"");
+					Thread.sleep(100);
+					SendKeys(workPhone,workPhone1[selOp]);
+					Thread.sleep(100);
+					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
+					Thread.sleep(100);
+					SendKeys(faxPhone,workPhone1[selOp]);	
+					Thread.sleep(100);
+					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
+					Thread.sleep(100);
+					if (ranNumbr(0,1)>0){
+						elementClick("ctl00_ContentZone_ctrlAccountData_chk_dtEnd");						
+						SendKeys("ctl00_ContentZone_ctrlAccountData_dt_end_box_date",dateSel(2018,2019));
+						Thread.sleep(100);
+						SendKeys("ctl00_ContentZone_ctrlAccountData_txt_warningThreshold_box_data", ranNumbr(10,15)+"");
+						Thread.sleep(100);
+					}
+					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_discounts_cmb_dropdown");
+				}else{
+					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data")).sendKeys(dniLetra("CIF",ranNumbr(10000000,19999999)));
+					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_companyType_cmb_dropdown");
+					Thread.sleep(100);
+					SendKeys(companyf,"Tecsidel, S.A");
+					Thread.sleep(100);
+					SendKeys(contactf,nameOp[selOp]+" "+lastNameOp[selOp]+", "+nameOp[selOp2]+" "+lastNameOp[selOp2]);
+					Thread.sleep(100);
+					SendKeys(addressf,addressTec[2]);
+					Thread.sleep(100);						
+					SendKeys(emailf,"info@tecsidel.es");
+					Thread.sleep(100);
+					SendKeys(phoneCel,ranNumbr(600000000,699999999)+"");
+					Thread.sleep(100);
+					SendKeys(workPhone,workPhone1[2]);
+					Thread.sleep(100);
+					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
+					Thread.sleep(100);
+					SendKeys(faxPhone,workPhone1[selOp]);					
+					Thread.sleep(100);
+					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
+					Thread.sleep(100);
+					if (ranNumbr(0,1)>0){
+						elementClick("ctl00_ContentZone_ctrlAccountData_chk_dtEnd");						
+						SendKeys("ctl00_ContentZone_ctrlAccountData_dt_end_box_date",dateSel(2018,2019));
+						Thread.sleep(100);						
+						SendKeys("ctl00_ContentZone_ctrlAccountData_txt_warningThreshold_box_data",ranNumbr(10,15)+"");
+						Thread.sleep(100);
+					}
+					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_discounts_cmb_dropdown");
+					
+				}
+				Thread.sleep(1000);
+				elementClick("ctl00_ButtonsZone_BtnSave_IB_Label");
+				Thread.sleep(2000);
+				
+
+			}catch (Exception e){
+				fail(e.getMessage());
+			}
+		}
+		
+		
 		@After
 		public void tearDown() throws Exception{			  
 			    driver.quit();
