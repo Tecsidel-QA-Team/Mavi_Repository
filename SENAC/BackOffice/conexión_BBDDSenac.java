@@ -109,7 +109,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 				    			System.out.println("No han subido tránsitos a Host");
 				    			fail("No han subido tránsitos a Host");
 				    		}else{
-				    			HostPlazaBackOffice.BOHost_VerTransacciones.
+				    			//HostPlazaBackOffice.BOHost_VerTransacciones.
 				    			Thread.sleep(1000);
 				    			
 				    		}
