@@ -9,15 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import BackOffice.senacFieldsConfiguration;
 import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.ClipboardOwner;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.Robot;
 import java.awt.Toolkit;
-import java.io.*;
-
+import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -25,18 +19,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-
-
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.support.ui.Select;
-
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 
 
 
@@ -156,7 +141,7 @@ public class crearIncidenciaRedMine extends senacFieldsConfiguration{
 			Robot robot = new Robot();
 			Thread.sleep(1000);
 			setClipboardContents(folderSel);
-			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_COLON);
 			robot.keyPress(KeyEvent.VK_V);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 			robot.keyRelease(KeyEvent.VK_V);
