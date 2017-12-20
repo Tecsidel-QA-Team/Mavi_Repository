@@ -2,20 +2,13 @@ package BackOffice;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
-import javax.sql.rowset.CachedRowSet;
-
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
-import com.sun.rowset.CachedRowSetImpl;
-
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -24,21 +17,11 @@ import BackOffice.senacFieldsConfiguration;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.LongStream;
-
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+
 
 
 
@@ -50,7 +33,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 		public static ArrayList<String> transactionsHIds = new ArrayList<String>();
 		public static ArrayList<String> transactionsPIds = new ArrayList<String>();		
 
-
+		@Before
 		public void setUp() throws Exception{
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
@@ -71,7 +54,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 			//borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\");
 				DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 				Date date = new Date();			
-				String transSearch = dateFormat.format(date);
+				//String transSearch = dateFormat.format(date);
 				String connectionUrlPlaza = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLPLAZA"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 				String connectionUrlHost = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLHOST"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
@@ -109,7 +92,7 @@ public class conexión_BBDDSenac extends senacFieldsConfiguration{
 				    			System.out.println("No han subido tránsitos a Host");
 				    			fail("No han subido tránsitos a Host");
 				    		}else{
-				    			HostPlazaBackOffice.BOHost_VerTransacciones.
+				    			//HostPlazaBackOffice.BOHost_VerTransacciones.
 				    			Thread.sleep(1000);
 				    			
 				    		}
