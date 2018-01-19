@@ -249,7 +249,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 						elementClick("ctl00_ContentZone_ChkOrigTollCompany");
 						Thread.sleep(500);
 					}else{
-						elementClick("ctl00_ContentZone_ChkOrigTollCompany");
+						elementClick("ctl00_ContentZone_ChkOrigCompany");
 						Thread.sleep(500);
 						selectDropDown("ctl00_ContentZone_CmbOrigTollCompany");
 						Thread.sleep(500);
@@ -315,7 +315,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 					elementClick("ctl00_ContentZone_BtnCreate");
 					Thread.sleep(2000);				
 					if (ranNumbr(0,1)>0){
-						elementClick("ctl00_ContentZone_ChkOrigTollCompany");
+						elementClick("ctl00_ContentZone_ChkOrigCompany");
 						Thread.sleep(100);
 						selectDropDown("ctl00_ContentZone_CmbOrigTollCompany");
 						Thread.sleep(300);
