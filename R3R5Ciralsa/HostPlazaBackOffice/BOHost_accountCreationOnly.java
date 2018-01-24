@@ -29,20 +29,11 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 			}
 
 			@Test
-			public void accountCreationInit() throws Exception {				
+			public void accountCreationInit() throws Exception {		
 				accountCreation();
 				Thread.sleep(1000);
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
-				String HMver = BOVersion.substring(1);
-				if (HMver.length()>18){
-					HMver = BOVersion.substring(19);
-					BOVersion=BOVersion.substring(0,17);
-				}else{
-					HMver = "<HM is not running>";
-					BOVersion=BOVersion.substring(0);
-					
-				}				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);				
+				System.out.println("Se ha probado en la versión del Host BO: " + getVersion("BO")+" y Host Manager: "+getVersion("HM"));				
 			}
 
 		public static void accountCreation() throws Exception {
@@ -77,6 +68,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				
 			}catch (Exception e){
 				e.printStackTrace();
+				System.out.println(e.getMessage());
 				fail(e.getMessage());
 			}
 		}
@@ -128,6 +120,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 					
 					
 				}else{
+					elementClick("ctl00_ContentZone_ctrlAccountData_radio_company_1");
 					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data")).sendKeys(dniLetra("CIF",ranNumbr(10000000,19999999)));
 					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_companyType_cmb_dropdown");
 					Thread.sleep(100);
@@ -202,9 +195,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
 					Thread.sleep(100);
 					SendKeys(faxPhone,workPhone1[selOp]);	
-					Thread.sleep(100);
-					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
-					Thread.sleep(100);
+					Thread.sleep(100);					
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountData_chk_dtEnd");						
 						SendKeys("ctl00_ContentZone_ctrlAccountData_dt_end_box_date",dateSel(2018,2019));
@@ -214,6 +205,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 					}
 					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_discounts_cmb_dropdown");
 				}else{
+					elementClick("ctl00_ContentZone_ctrlAccountData_radio_company_1");
 					driver.findElement(By.id("ctl00_ContentZone_ctrlAccountData_txt_ID_box_data")).sendKeys(dniLetra("CIF",ranNumbr(10000000,19999999)));
 					selectDropDown("ctl00_ContentZone_ctrlAccountData_cmb_companyType_cmb_dropdown");
 					Thread.sleep(100);
@@ -232,9 +224,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 					SendKeys(perPhone,ranNumbr(900000000,999999999)+"");
 					Thread.sleep(100);
 					SendKeys(faxPhone,workPhone1[selOp]);					
-					Thread.sleep(100);
-					selectDropDown("ctl00_ContentZone_ctrlAccountExempt_combo_exempts_cmb_dropdown");
-					Thread.sleep(100);
+					Thread.sleep(100);										
 					if (ranNumbr(0,1)>0){
 						elementClick("ctl00_ContentZone_ctrlAccountData_chk_dtEnd");						
 						SendKeys("ctl00_ContentZone_ctrlAccountData_dt_end_box_date",dateSel(2018,2019));
