@@ -38,12 +38,6 @@ public class BOHost_accountCreationWithVehicleandPAN extends Settingsfields_File
 				vehicleCreation();
 				Thread.sleep(2000);
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente y con el vehículo creado con la matricula: "+matriNu+ " y el PAN: "+PAN);
-				String HMver = BOVersion.substring(1);
-				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);			
-				}else{
-					HMver = "<HM is not running>";
-				}				
 				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));				
 		}
 
