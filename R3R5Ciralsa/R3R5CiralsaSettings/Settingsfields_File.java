@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Settingsfields_File {
 	public static String dateverTransacciones;
 	public static int verTransDate;
+	public static String hmVersion;
 	public static String [] accountLink= new String[]{"Cliente", "Exenta"};
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostr3r5ciralsa/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazar3r5ciralsa/web/forms/core/login.aspx";
@@ -242,5 +243,38 @@ public class Settingsfields_File {
 			}
 
 		}
+	public static String getVersion (String BOSelected, String HMSelected){
+   					
+			int versionComponent = BOVersion.length();
+			 
+			if (BOVersion.contains("_")){								
+				if (versionComponent<17){					
+					BOVersion = BOVersion.substring(0);
+					hmVersion = "HM is not Running";
+				}else{
+					hmVersion = BOVersion.substring(17);
+					BOVersion = BOVersion.substring(0, 16);
+					
+				}
+			}
+			if (!BOVersion.contains("_")){
+				if (versionComponent<10){
+					BOVersion = BOVersion.substring(0);
+					hmVersion = "HM is not Running";
+				}else{
+					hmVersion = BOVersion.substring(11);
+					BOVersion = BOVersion.substring(0, 9);					
+				}
+			}
+			if (BOSelected == "BO"){
+				BOSelected = "BOHost: "+BOVersion;
+				
+			}
+			if (HMSelected == "HM"){
+				HMSelected = "HostManager: "+hmVersion;				
+			}
+				return BOSelected +" y "+ HMSelected; 		
+						
+   	}
       	
 }
