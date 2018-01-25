@@ -247,7 +247,7 @@ public class Settingsfields_File {
    					
 			int versionComponent = BOVersion.length();
 			 
-			if (BOVersion.contains("_")){								
+			if (BOVersion.substring(3).contains("_")){								
 				if (versionComponent<17){					
 					BOVersion = BOVersion.substring(0);
 					hmVersion = "HM is not Running";
