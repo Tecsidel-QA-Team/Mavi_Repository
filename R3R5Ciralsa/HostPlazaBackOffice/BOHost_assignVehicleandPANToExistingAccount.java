@@ -72,7 +72,7 @@ public class BOHost_assignVehicleandPANToExistingAccount extends Settingsfields_
 					HMver = "<HM is not running>";
 					BOVersion=BOVersion.substring(1,7);
 				}			
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 			}catch (Exception e){
 				fail (e.getMessage());
 			}

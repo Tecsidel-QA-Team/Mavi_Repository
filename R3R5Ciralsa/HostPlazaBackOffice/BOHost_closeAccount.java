@@ -89,7 +89,7 @@ public class BOHost_closeAccount extends Settingsfields_File {
 					HMver = "<HM is not running>";
 					BOVersion = BOVersion.substring(0);
 				}				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 			}catch (Exception e){
 				fail (e.getMessage());
 			}

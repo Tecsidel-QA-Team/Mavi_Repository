@@ -33,7 +33,7 @@ public class BOHost_accountCreationOnly extends Settingsfields_File {
 				accountCreation();
 				Thread.sleep(1000);
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
-				System.out.println("Se ha probado en la versión del Host BO: " + getVersion("BO")+" y Host Manager: "+getVersion("HM"));				
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));				
 			}
 
 		public static void accountCreation() throws Exception {

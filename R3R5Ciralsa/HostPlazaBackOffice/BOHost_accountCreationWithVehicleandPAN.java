@@ -44,7 +44,7 @@ public class BOHost_accountCreationWithVehicleandPAN extends Settingsfields_File
 				}else{
 					HMver = "<HM is not running>";
 				}				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+HMver);				
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));				
 		}
 
 		public static void vehicleCreation() throws Exception {

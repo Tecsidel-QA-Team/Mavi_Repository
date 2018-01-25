@@ -69,7 +69,7 @@ public class BOHost_gestion_MapeoDAC_CAT extends Settingsfields_File {
 									break;								
 			}
 			
-			System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);
+			System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 			
 		}
 		

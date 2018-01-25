@@ -57,14 +57,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 				Thread.sleep(2000);
 				takeScreenShot("E:\\Selenium\\","gestiónTarifasPage"+timet+".jpeg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_tarifasgestionTarifas\\attachments\\","gestiónTarifasPage.jpeg");
-				String HMver = BOVersion.substring(1);
-				if (HMver.length()>18){
-					HMver = BOVersion.substring(18);
-					BOVersion = BOVersion.substring(0,16);
-				}else{
-					HMver = "<HM is not running>";
-					BOVersion = BOVersion.substring(0,16);
-				}			
+				String HMver = BOVersion.substring(1);					
 				opSel = 0; ranNumbr(0,3);
 				switch (tarifasOption[opSel]){				
 					case "Crear Copia" :				SendKeys("ctl00_ContentZone_dt_newTime_box_date", dateSel(2017,2018));
@@ -155,7 +148,7 @@ public class BOHost_tarifasGestionTarifas extends Settingsfields_File {
 														break;
 				}
 				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion+" y Host Manager: "+HMver);
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 				
 			}catch (Exception e){
 				e.printStackTrace();

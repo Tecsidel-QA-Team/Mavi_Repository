@@ -61,14 +61,6 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 				takeScreenShot("E:\\Selenium\\","homeBOHostPage"+timet+".jpeg");
 				takeScreenShot("E:\\workspace\\Mavi_Repository\\BOHost_tarifasCalendario\\attachments\\","homeBOHostPage.jpeg");
 				BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
-				String HMver = BOVersion.substring(1);				
-				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);
-					BOVersion=BOVersion.substring(0,16);
-				}else{
-					HMver = "<HM is not running>";
-					BOVersion=BOVersion.substring(0,16);
-				}	
 				Thread.sleep(2000);					
 				action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
 				Thread.sleep(200);
@@ -114,7 +106,7 @@ public class BOHost_tarifasCalendario extends Settingsfields_File {
 												System.out.println("Se han copiado las fechas del Calendario anterior: "+(yearSel-1)+" a este año: "+yearSel+" correctamente");
 												break;
 				}
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion +" y Host Manager: "+HMver);
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 				
 			}catch (Exception e){
 				e.printStackTrace();

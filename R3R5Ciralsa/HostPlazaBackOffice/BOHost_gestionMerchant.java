@@ -98,7 +98,7 @@ public class BOHost_gestionMerchant extends Settingsfields_File {
 											System.out.println("Se ha borrado el Merchant: "+merchantName2+ " con el Código:" +merchantCodeS+" correctamente");
 											break;
 				}				
-				System.out.println("Se ha probado en la versión del BO Host: " + BOVersion +" y Host Manager: "+HMver);
+				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 				
 			}catch (Exception e){
 				e.getStackTrace();
