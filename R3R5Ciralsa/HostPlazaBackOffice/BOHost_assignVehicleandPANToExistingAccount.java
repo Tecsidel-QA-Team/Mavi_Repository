@@ -63,15 +63,7 @@ public class BOHost_assignVehicleandPANToExistingAccount extends Settingsfields_
 				Thread.sleep(1000);
 				BOHost_accountCreationWithVehicleandPAN.vehicleCreation();
 				Thread.sleep(1000);
-				System.out.println("Se ha asignado un vehículo a la cuenta: "+accountNumbr.substring(7,16)+" correctamente con el vehículo creado con la matricula: "+matriNu+ " y el PAN: "+PAN);
-				String HMver = BOVersion.substring(1);				
-				if (HMver.length()>18){
-					HMver = BOVersion.substring(17);
-					BOVersion=BOVersion.substring(1,16);
-				}else{
-					HMver = "<HM is not running>";
-					BOVersion=BOVersion.substring(1,7);
-				}			
+				System.out.println("Se ha asignado un vehículo a la cuenta: "+accountNumbr.substring(7,16)+" correctamente con el vehículo creado con la matricula: "+matriNu+ " y el PAN: "+PAN);			
 				System.out.println("Se ha probado en la versión del: "+ getVersion("BO","HM"));
 			}catch (Exception e){
 				fail (e.getMessage());
